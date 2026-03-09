@@ -1,0 +1,228 @@
+/* === Lazyrails-specific styles === */
+/* Builds on top of /style.css */
+
+/* -- Accent overrides -- */
+.lr-title-accent {
+  color: #e11d48;
+}
+
+[data-theme="dark"] .lr-title-accent {
+  color: #fb7185;
+}
+
+.lr-btn-primary {
+  background: #e11d48;
+  color: #fff;
+}
+
+[data-theme="dark"] .lr-btn-primary {
+  background: #e11d48;
+  color: #fff;
+  border-color: var(--border);
+}
+
+.lr-emoji {
+  font-size: 3rem;
+}
+
+/* -- Nav bar -- */
+.lr-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--bg);
+  border-bottom: var(--border-w) solid var(--border);
+  transition: background 0.3s ease;
+}
+
+.lr-nav-back {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.lr-nav .theme-toggle {
+  position: static;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+}
+
+/* -- Hero adjustments -- */
+.lr-hero {
+  padding-top: 100px;
+}
+
+/* -- Screenshot placeholders -- */
+.lr-screenshot-placeholder {
+  background: var(--surface);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lr-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.lr-placeholder-icon {
+  font-size: 2.5rem;
+  opacity: 0.5;
+}
+
+.lr-placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+/* -- Panel grid -- */
+.lr-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.lr-panel-card {
+  background: var(--surface);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lr-panel-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+
+.lr-panel-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.lr-panel-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.lr-panel-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.lr-panel-card code {
+  font-size: 0.8em;
+}
+
+/* -- Code showcase (single centered block) -- */
+.lr-code-showcase {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.lr-code-showcase .code-block {
+  max-width: none;
+}
+
+/* -- Snippet grids -- */
+.lr-snippets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.lr-snippets-grid .code-block {
+  max-width: none;
+}
+
+.lr-snippets-grid .code-block pre {
+  font-size: 0.76rem;
+  line-height: 1.55;
+  padding: 14px 16px;
+}
+
+.lr-snippets-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.lr-snippets-two .code-block {
+  max-width: none;
+}
+
+.lr-snippets-two .code-block pre {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  padding: 14px 16px;
+}
+
+/* -- Gallery -- */
+.lr-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.lr-gallery-item {
+  aspect-ratio: 16 / 10;
+}
+
+/* -- CTA section -- */
+.lr-cta {
+  padding-bottom: 80px;
+}
+
+/* -- Responsive -- */
+@media (max-width: 900px) {
+  .lr-panel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lr-snippets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lr-snippets-two {
+    grid-template-columns: 1fr;
+  }
+
+  .lr-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .lr-panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .lr-hero {
+    padding-top: 80px;
+  }
+}

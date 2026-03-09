@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Chamomile API</title>
+
+
+  <meta name="keywords" content="ruby,documentation,Chamomile API">
+
+    <meta
+      name="description"
+      content="Chamomile API: guide. elm-lang."
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chamomile API">
+
+
+  <meta
+    property="og:description"
+    content="API documentation for Chamomile API - Browse classes, modules, and methods"
+  >
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chamomile API">
+
+
+  <meta
+    name="twitter:description"
+    content="API documentation for Chamomile API - Browse classes, modules, and methods"
+  >
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script
+  src="./js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="./js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="file has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    Chamomile API
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="./README_md.html">
+                README
+              </a>
+            </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="./Chamomile.html">Chamomile</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Chamomile/CancelToken.html">CancelToken</a></code></li><li><code><a href="./Chamomile/Commands.html">Commands</a></code></li><li><code><a href="./Chamomile/EscapeParser.html">EscapeParser</a></code></li><li><code><a href="./Chamomile/InputReader.html">InputReader</a></code></li><li><code><a href="./Chamomile/KeyMap.html">KeyMap</a></code></li><li><code><a href="./Chamomile/Keymap.html">Keymap</a></code></li><li><details><summary><code><a href="./Chamomile/Model.html">Model</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Chamomile/Model/ClassMethods.html">ClassMethods</a></code></li><li><code><a href="./Chamomile/Model/FrozenModelEnforcement.html">FrozenModelEnforcement</a></code></li></ul></details></li><li><code><a href="./Chamomile/NullRenderer.html">NullRenderer</a></code></li><li><code><a href="./Chamomile/Program.html">Program</a></code></li><li><code><a href="./Chamomile/Renderer.html">Renderer</a></code></li><li><details><summary><code><a href="./Chamomile/Router.html">Router</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Chamomile/Router/ClassMethods.html">ClassMethods</a></code></li></ul></details></li><li><details><summary><code><a href="./Chamomile/Testing.html">Testing</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Chamomile/Testing/Harness.html">Harness</a></code></li><li><code><a href="./Chamomile/Testing/SnapshotMismatch.html">SnapshotMismatch</a></code></li></ul></details></li></ul></details></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main">
+
+  
+<span id="label-Chamomile" class="legacy-anchor"></span>
+<h1 id="chamomile"><a href="#chamomile"><a href="Chamomile.html"><code>Chamomile</code></a></a></h1>
+
+<p>A Ruby TUI framework based on <a href="https://guide.elm-lang.org/architecture/">The Elm Architecture</a>. Inspired by Go’s <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a>.</p>
+
+<p>Build rich, interactive terminal applications in Ruby using the <strong>Model / Update / View</strong> pattern.</p>
+
+<span id="label-Features" class="legacy-anchor"></span>
+<h2 id="features"><a href="#features">Features</a></h2>
+<ul><li>
+<p><strong>Elm Architecture</strong> — predictable state management with messages and commands</p>
+</li><li>
+<p><strong>Streaming input parser</strong> — ANSI escape sequences, CSI params, SGR mouse, bracketed paste, focus/blur</p>
+</li><li>
+<p><strong>FPS-throttled renderer</strong> — diff rendering in alt-screen, inline mode for non-fullscreen apps</p>
+</li><li>
+<p><strong>Command system</strong> — async commands via threads, batch/sequence composition, tick/every helpers</p>
+</li><li>
+<p><strong>Full terminal control</strong> — mouse, bracketed paste, focus reporting, cursor shapes, alt screen toggling</p>
+</li><li>
+<p><strong>Signal handling</strong> — SIGWINCH (resize), SIGINT, SIGTERM, SIGTSTP/SIGCONT (suspend/resume)</p>
+</li><li>
+<p><strong>Zero runtime dependencies</strong> — just Ruby &gt;= 3.2</p>
+</li></ul>
+
+<span id="label-Installation" class="legacy-anchor"></span>
+<h2 id="installation"><a href="#installation">Installation</a></h2>
+
+<pre class="ruby"><span class="ruby-comment"># Gemfile</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&quot;chamomile&quot;</span>
+</pre>
+
+<span id="label-Quick+Start" class="legacy-anchor"></span>
+<h2 id="quick-start"><a href="#quick-start">Quick Start</a></h2>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;chamomile&quot;</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">Counter</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
+    <span class="ruby-ivar">@count</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyMsg</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">key</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">:up</span>,   <span class="ruby-string">&quot;k&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-ivar">@count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">:down</span>, <span class="ruby-string">&quot;j&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-ivar">@count</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;q&quot;</span>         <span class="ruby-keyword">then</span> <span class="ruby-keyword">return</span> <span class="ruby-identifier">quit</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">view</span>
+    <span class="ruby-node">&quot;Count: #{@count}\n\nup/k increment | down/j decrement | q quit&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">Chamomile</span>.<span class="ruby-identifier">run</span>(<span class="ruby-constant">Counter</span>.<span class="ruby-identifier">new</span>)
+</pre>
+
+<span id="label-How+It+Works" class="legacy-anchor"></span>
+<h2 id="how-it-works"><a href="#how-it-works">How It Works</a></h2>
+<ol><li>
+<p><strong>Model</strong> — your class includes <a href="Chamomile/Model.html"><code>Chamomile::Model</code></a> and holds application state</p>
+</li><li>
+<p><strong><code>start</code></strong> — returns an optional command to run at startup (timers, data loading, etc.)</p>
+</li><li>
+<p><strong><code>update(msg)</code></strong> — receives messages (key presses, mouse events, ticks), returns a command or nil</p>
+</li><li>
+<p><strong><code>view</code></strong> — returns a string to render to the terminal</p>
+</li><li>
+<p><strong>Commands</strong> — lambdas that run in threads and return messages back to the event loop</p>
+</li></ol>
+
+<span id="label-Messages" class="legacy-anchor"></span>
+<h2 id="messages"><a href="#messages">Messages</a></h2>
+
+<table role="table">
+<thead>
+<tr>
+<th>Message</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KeyMsg</code></td>
+<td>Key press with <code>.key</code> (Symbol or String) and <code>.mod</code> (<code>:ctrl</code>, <code>:alt</code>, <code>:shift</code>)</td>
+</tr>
+<tr>
+<td><code>MouseMsg</code></td>
+<td>Mouse event with position, button, action, modifiers</td>
+</tr>
+<tr>
+<td><code>PasteMsg</code></td>
+<td>Bracketed paste content</td>
+</tr>
+<tr>
+<td><code>WindowSizeMsg</code></td>
+<td>Terminal resize with <code>.width</code> and <code>.height</code></td>
+</tr>
+<tr>
+<td><code>FocusMsg</code> / <code>BlurMsg</code></td>
+<td>Terminal focus changes</td>
+</tr>
+<tr>
+<td><code>TickMsg</code></td>
+<td>Timer tick with <code>.time</code></td>
+</tr>
+<tr>
+<td><code>InterruptMsg</code></td>
+<td>Ctrl+C (handle or let it quit)</td>
+</tr>
+<tr>
+<td><code>SuspendMsg</code> / <code>ResumeMsg</code></td>
+<td>Ctrl+Z suspend and resume</td>
+</tr>
+</tbody>
+</table>
+
+<span id="label-Commands" class="legacy-anchor"></span>
+<h2 id="commands"><a href="#commands">Commands</a></h2>
+
+<p>Include <a href="Chamomile/Commands.html"><code>Chamomile::Commands</code></a> for these helpers:</p>
+
+<pre class="ruby"><span class="ruby-identifier">quit</span>                          <span class="ruby-comment"># exit the program</span>
+<span class="ruby-identifier">tick</span>(<span class="ruby-value">1.0</span>)                     <span class="ruby-comment"># fire a TickMsg after 1 second</span>
+<span class="ruby-identifier">every</span>(<span class="ruby-value">1.0</span>)                    <span class="ruby-comment"># fire a TickMsg aligned to wall clock</span>
+<span class="ruby-identifier">batch</span>(<span class="ruby-identifier">cmd1</span>, <span class="ruby-identifier">cmd2</span>)             <span class="ruby-comment"># run commands concurrently</span>
+<span class="ruby-identifier">sequence</span>(<span class="ruby-identifier">cmd1</span>, <span class="ruby-identifier">cmd2</span>)          <span class="ruby-comment"># run commands in order</span>
+<span class="ruby-identifier">exec</span>(<span class="ruby-string">&quot;vim&quot;</span>, <span class="ruby-string">&quot;file.txt&quot;</span>)      <span class="ruby-comment"># shell out, suspend TUI, resume after</span>
+<span class="ruby-identifier">window_title</span>(<span class="ruby-string">&quot;My App&quot;</span>)        <span class="ruby-comment"># set terminal title</span>
+<span class="ruby-identifier">cursor_shape</span>(<span class="ruby-value">:bar</span>)            <span class="ruby-comment"># :block, :bar, :underline, :blinking_*</span>
+<span class="ruby-identifier">show_cursor</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">hide_cursor</span>     <span class="ruby-comment"># cursor visibility</span>
+<span class="ruby-identifier">enter_alt_screen</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">exit_alt_screen</span>
+<span class="ruby-identifier">println</span>(<span class="ruby-string">&quot;log line&quot;</span>)           <span class="ruby-comment"># print above the TUI area</span>
+</pre>
+
+<span id="label-Options" class="legacy-anchor"></span>
+<h2 id="options"><a href="#options">Options</a></h2>
+
+<pre class="ruby"><span class="ruby-constant">Chamomile</span>.<span class="ruby-identifier">run</span>(<span class="ruby-identifier">model</span>,
+  <span class="ruby-value">alt_screen:</span> <span class="ruby-keyword">true</span>,          <span class="ruby-comment"># fullscreen mode (default: true)</span>
+  <span class="ruby-value">mouse:</span> <span class="ruby-value">:cell_motion</span>,       <span class="ruby-comment"># :none, :cell_motion, :all_motion</span>
+  <span class="ruby-value">bracketed_paste:</span> <span class="ruby-keyword">true</span>,     <span class="ruby-comment"># enable paste detection</span>
+  <span class="ruby-value">report_focus:</span> <span class="ruby-keyword">true</span>,        <span class="ruby-comment"># enable focus/blur events</span>
+  <span class="ruby-value">fps:</span> <span class="ruby-value">60</span>,                   <span class="ruby-comment"># render throttle</span>
+  <span class="ruby-value">catch_panics:</span> <span class="ruby-keyword">true</span>,        <span class="ruby-comment"># recover from exceptions</span>
+)
+</pre>
+
+<span id="label-Examples" class="legacy-anchor"></span>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+
+<pre class="sh">ruby examples/hello.rb       # minimal hello world
+ruby examples/counter.rb     # counter with tick timer
+ruby examples/list.rb        # navigable list
+ruby examples/mouse.rb       # mouse event display
+ruby examples/exec.rb        # shell out to $EDITOR
+ruby examples/inline.rb      # non-fullscreen inline mode</pre>
+
+<span id="label-Ecosystem" class="legacy-anchor"></span>
+<h2 id="ecosystem"><a href="#ecosystem">Ecosystem</a></h2>
+
+<table role="table">
+<thead>
+<tr>
+<th>Gem</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>chamomile</strong></td>
+<td>Core framework (this gem)</td>
+</tr>
+<tr>
+<td><strong><a href="https://github.com/chamomile-rb/petals">petals</a></strong></td>
+<td>Reusable TUI components — Spinner, TextInput, Timer, Viewport, Table, List, and more</td>
+</tr>
+<tr>
+<td><strong><a href="https://github.com/chamomile-rb/flourish">flourish</a></strong></td>
+<td>Terminal styling — colors, borders, padding, layout composition</td>
+</tr>
+</tbody>
+</table>
+
+<span id="label-Development" class="legacy-anchor"></span>
+<h2 id="development"><a href="#development">Development</a></h2>
+
+<pre class="sh">bundle install
+bundle exec rspec        # run tests
+bundle exec rubocop      # lint</pre>
+
+<span id="label-License" class="legacy-anchor"></span>
+<h2 id="license"><a href="#license">License</a></h2>
+
+<p><a href="LICENSE">MIT</a></p>
+
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+

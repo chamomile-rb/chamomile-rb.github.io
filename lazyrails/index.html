@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazyrails — A lazygit-style TUI for Rails</title>
+  <meta name="description" content="Lazyrails is a terminal UI for Rails developers. Routes, migrations, models, tests, server logs, gems, and more — all in one split-pane interface. Built with Chamomile.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lazyrails/lazyrails.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F682;</text></svg>">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="lr-nav">
+    <a href="/" class="lr-nav-back">&larr; Chamomile</a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="icon-moon">&#x1F319;</span>
+      <span class="icon-sun">&#x2600;&#xFE0F;</span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero lr-hero">
+    <div class="container hero-split">
+      <div class="hero-left">
+        <span class="hero-flower lr-emoji">&#x1F682;</span>
+        <h1 class="hero-title"><span class="lr-title-accent">Lazyrails</span></h1>
+        <p class="hero-subtitle">A lazygit-style TUI for Rails developers.</p>
+        <p class="hero-tagline">Routes, migrations, models, tests, server, gems, rake &mdash; all in one split-pane interface. Every command logged so you learn the CLI as you go.</p>
+        <div class="hero-actions">
+          <a href="https://github.com/chamomile-rb/lazyrails" class="btn btn-primary lr-btn-primary">View on GitHub</a>
+          <a href="#features" class="btn btn-secondary">See Features</a>
+        </div>
+        <div class="hero-install">
+          <code>gem install lazyrails</code>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="lr-screenshot-placeholder">
+          <div class="lr-placeholder-inner">
+            <span class="lr-placeholder-icon">&#x1F4F7;</span>
+            <span class="lr-placeholder-text">Lazyrails main interface screenshot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Panels Overview -->
+  <section id="features" class="section">
+    <div class="container">
+      <h2>13+ Panels. One Interface.</h2>
+      <p class="section-intro">Everything the Rails CLI offers, organized into a single navigable split-pane view.</p>
+      <div class="lr-panel-grid">
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F4CA;</span>
+          <h3>Status</h3>
+          <p>Rails version, Ruby version, git branch, database adapter &mdash; your project at a glance.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F680;</span>
+          <h3>Server</h3>
+          <p>Start/stop Rails server with live log streaming. Auto-detects Puma, WEBrick, and <code>bin/dev</code>.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F6A6;</span>
+          <h3>Routes</h3>
+          <p>Browse all routes with verb coloring. Drill into controller source, see if the action method exists.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F5C4;</span>
+          <h3>Database</h3>
+          <p>Schema browser with column types, nullability, defaults. Run interactive SQL queries on dev.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F4E6;</span>
+          <h3>Models</h3>
+          <p>Every model with its associations, validations, and columns. Introspected from live Rails APIs.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F9EA;</span>
+          <h3>Tests</h3>
+          <p>Run your test suite, individual files, or specific tests. See pass/fail with timing.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F48E;</span>
+          <h3>Gems</h3>
+          <p>Browse all dependencies from Gemfile.lock with version and group info.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F9F9;</span>
+          <h3>Rake</h3>
+          <p>Browse and execute rake tasks. See task descriptions and namespaces.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F4BB;</span>
+          <h3>Console</h3>
+          <p>Evaluate Ruby expressions via <code>rails runner</code>. Quick REPL without leaving the TUI.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F510;</span>
+          <h3>Credentials</h3>
+          <p>Decrypt and view per-environment credentials securely.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x1F4DC;</span>
+          <h3>Logs</h3>
+          <p>Tail request logs live. Filter by slow requests or errors.</p>
+        </div>
+        <div class="lr-panel-card">
+          <span class="lr-panel-icon">&#x2709;&#xFE0F;</span>
+          <h3>Mailers &amp; Jobs</h3>
+          <p>Preview ActionMailer output. Browse, retry, and discard Solid Queue jobs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Introspection -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Smart Introspection</h2>
+      <p class="section-intro">One <code>rails runner</code> call replaces 3+ separate CLI commands. Structured JSON, not fragile text parsing.</p>
+
+      <div class="lr-code-showcase">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">introspect_runner.rb</span>
+          </div>
+          <pre><code><span class="comment"># Routes via ActionDispatch::Routing</span>
+data[<span class="sym">:routes</span>] = <span class="type">Rails</span>.application.routes.routes.filter_map <span class="kw">do</span> |route|
+  w = <span class="type">ActionDispatch::Routing::RouteWrapper</span>.new(route)
+  <span class="kw">next if</span> w.internal?
+  { verb: w.verb, path: w.path, action: w.endpoint, name: w.name }
+<span class="kw">end</span>
+
+<span class="comment"># Schema columns directly from the connection</span>
+conn = <span class="type">ActiveRecord::Base</span>.connection
+data[<span class="sym">:tables</span>] = conn.tables.sort.to_h <span class="kw">do</span> |table|
+  cols = conn.columns(table).map <span class="kw">do</span> |c|
+    { name: c.name, type: c.type, null: c.null, default: c.default }
+  <span class="kw">end</span>
+  [table, cols]
+<span class="kw">end</span>
+
+<span class="comment"># Models with associations and validations</span>
+data[<span class="sym">:models</span>] = <span class="type">ActiveRecord::Base</span>.descendants.filter_map <span class="kw">do</span> |model|
+  <span class="kw">next if</span> model.abstract_class? || !model.table_exists?
+  assocs = model.reflect_on_all_associations.map { |a|
+    { macro: a.macro, name: a.name, class_name: a.class_name }
+  }
+  { name: model.name, table: model.table_name, associations: assocs }
+<span class="kw">end</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Immutable Data Structs -->
+  <section class="section">
+    <div class="container">
+      <h2>Clean Data Modeling</h2>
+      <p class="section-intro">Immutable structs with <code>Data.define</code>. Every piece of data has a clear shape.</p>
+
+      <div class="lr-snippets-two">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">Route</span>
+          </div>
+          <pre><code><span class="type">Route</span> = <span class="type">Data</span>.define(<span class="sym">:verb</span>, <span class="sym">:path</span>, <span class="sym">:action</span>, <span class="sym">:name</span>, <span class="sym">:engine</span>) <span class="kw">do</span>
+  <span class="kw">def</span> <span class="fn">to_s</span>
+    <span class="str">"</span>#{verb.ljust(<span class="num">7</span>)} #{path.ljust(<span class="num">40</span>)} #{action}<span class="str">"</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">Migration</span>
+          </div>
+          <pre><code><span class="type">Migration</span> = <span class="type">Data</span>.define(
+  <span class="sym">:status</span>, <span class="sym">:version</span>, <span class="sym">:name</span>, <span class="sym">:file_path</span>, <span class="sym">:database</span>
+) <span class="kw">do</span>
+  <span class="kw">def</span> <span class="fn">up?</span> = status == <span class="str">"up"</span>
+  <span class="kw">def</span> <span class="fn">down?</span> = status == <span class="str">"down"</span>
+
+  <span class="kw">def</span> <span class="fn">to_s</span>
+    arrow = up? ? <span class="str">"\u2191"</span> : <span class="str">"\u2193"</span>
+    <span class="str">"</span>#{arrow} #{version}  #{name}<span class="str">"</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Server Management -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Subprocess Mastery</h2>
+      <p class="section-intro">Sophisticated server lifecycle management. Process groups, Bundler isolation, intelligent state detection.</p>
+
+      <div class="lr-code-showcase">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">server_manager.rb</span>
+          </div>
+          <pre><code><span class="kw">class</span> <span class="type">ServerManager</span>
+  <span class="type">MAX_LOG_LINES</span> = <span class="num">2000</span>
+  <span class="type">KILL_TIMEOUT</span> = <span class="num">5</span>
+
+  <span class="kw">def</span> <span class="fn">start</span>
+    <span class="ivar">@state</span> = <span class="sym">:starting</span>
+    <span class="ivar">@thread</span> = <span class="type">Thread</span>.new <span class="kw">do</span>
+      env = { <span class="str">"DISABLE_SPRING"</span> =&gt; <span class="str">"1"</span>, <span class="str">"PORT"</span> =&gt; <span class="ivar">@port</span>.to_s }
+      cmd = <span class="ivar">@uses_bin_dev</span> ? <span class="str">"bin/dev"</span> : <span class="str">"</span>#{<span class="ivar">@project</span>.bin_rails}<span class="str"> server"</span>
+
+      <span class="type">Bundler</span>.with_unbundled_env <span class="kw">do</span>
+        <span class="type">Open3</span>.popen2e(env, cmd, chdir: <span class="ivar">@project</span>.dir, pgroup: <span class="kw">true</span>) <span class="kw">do</span> |stdin, out, wait|
+          stdin.close
+          out.each_line <span class="kw">do</span> |line|
+            <span class="ivar">@mutex</span>.synchronize <span class="kw">do</span>
+              <span class="ivar">@log_lines</span> &lt;&lt; line
+              <span class="ivar">@log_lines</span>.shift <span class="kw">if</span> <span class="ivar">@log_lines</span>.size &gt; <span class="type">MAX_LOG_LINES</span>
+              <span class="ivar">@state</span> = <span class="sym">:running</span> <span class="kw">if</span> server_ready?(line)
+            <span class="kw">end</span>
+          <span class="kw">end</span>
+        <span class="kw">end</span>
+      <span class="kw">end</span>
+    <span class="kw">end</span>
+  <span class="kw">end</span>
+
+  <span class="kw">private</span>
+
+  <span class="kw">def</span> <span class="fn">server_ready?</span>(line)
+    line.include?(<span class="str">"Listening on"</span>) ||  <span class="comment"># Puma</span>
+    line.include?(<span class="str">"listening on"</span>) ||  <span class="comment"># Falcon, Vite</span>
+    line.include?(<span class="str">"Ctrl-C to stop"</span>)   <span class="comment"># WEBrick, Thin</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety -->
+  <section class="section">
+    <div class="container">
+      <h2>Safety Built In</h2>
+      <p class="section-intro">Destructive operations require confirmation proportional to their risk. Every command is logged with undo support.</p>
+
+      <div class="lr-snippets-two">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">confirmation.rb</span>
+          </div>
+          <pre><code><span class="kw">class</span> <span class="type">Confirmation</span>
+  <span class="comment"># Red: type panel name to confirm</span>
+  <span class="type">RED_PATTERNS</span> = <span class="str">%w[db:drop db:reset db:seed:replant]</span>
+
+  <span class="comment"># Yellow: y/n prompt</span>
+  <span class="type">YELLOW_PATTERNS</span> = <span class="str">%w[db:rollback db:migrate:down destroy]</span>
+
+  <span class="kw">def</span> <span class="kw">self</span>.<span class="fn">detect_tier</span>(cmd)
+    cmd = cmd.join(<span class="str">" "</span>) <span class="kw">if</span> cmd.is_a?(<span class="type">Array</span>)
+    <span class="kw">return</span> <span class="sym">:red</span> <span class="kw">if</span> <span class="type">RED_PATTERNS</span>.any? { |p| cmd.include?(p) }
+    <span class="kw">return</span> <span class="sym">:yellow</span> <span class="kw">if</span> <span class="type">YELLOW_PATTERNS</span>.any? { |p| cmd.include?(p) }
+    <span class="sym">:green</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">command_log.rb &mdash; undo</span>
+          </div>
+          <pre><code><span class="kw">def</span> <span class="fn">reverse_command</span>(entry)
+  <span class="kw">case</span> entry.command
+  <span class="kw">when</span> <span class="str">/rails generate (.+)/</span>
+    entry.command.sub(<span class="str">"generate"</span>, <span class="str">"destroy"</span>)
+  <span class="kw">when</span> <span class="str">/db:migrate\b(?!:)/</span>
+    <span class="str">"bin/rails db:rollback"</span>
+  <span class="kw">when</span> <span class="str">/db:migrate:up VERSION=(\d+)/</span>
+    version = <span class="type">Regexp</span>.last_match(<span class="num">1</span>)
+    <span class="str">"bin/rails db:migrate:down VERSION=</span>#{version}<span class="str">"</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Routes View -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Rich Detail Views</h2>
+      <p class="section-intro">Drill into any item for full context. Routes show verb coloring and controller resolution.</p>
+
+      <div class="lr-code-showcase">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">views/routes_view.rb</span>
+          </div>
+          <pre><code><span class="type">VERB_COLORS</span> = {
+  <span class="str">"GET"</span>    =&gt; <span class="str">"#04b575"</span>,
+  <span class="str">"POST"</span>   =&gt; <span class="str">"#5b9bd5"</span>,
+  <span class="str">"PUT"</span>    =&gt; <span class="str">"#e5c07b"</span>,
+  <span class="str">"PATCH"</span>  =&gt; <span class="str">"#e5c07b"</span>,
+  <span class="str">"DELETE"</span> =&gt; <span class="str">"#ff6347"</span>,
+}
+
+<span class="kw">def</span> <span class="kw">self</span>.<span class="fn">render_detail</span>(route, project_dir, width:)
+  lines = [<span class="str">"</span>#{route.verb} #{route.path}<span class="str">"</span>]
+  lines &lt;&lt; (<span class="str">"="</span> * [width - <span class="num">4</span>, <span class="num">40</span>].min)
+  lines &lt;&lt; <span class="str">"Action:     </span>#{route.action}<span class="str">"</span>
+
+  <span class="kw">if</span> route.action.include?(<span class="str">"#"</span>)
+    controller, action = route.action.split(<span class="str">"#"</span>, <span class="num">2</span>)
+    path = <span class="str">"app/controllers/</span>#{controller}<span class="str">_controller.rb"</span>
+    content = safe_read(<span class="type">File</span>.join(project_dir, path))
+    <span class="kw">if</span> content&amp;.include?(<span class="str">"def </span>#{action}<span class="str">"</span>)
+      lines &lt;&lt; <span class="str">"Method:     def </span>#{action}<span class="str"> \u2713"</span>
+    <span class="kw">end</span>
+  <span class="kw">end</span>
+  lines.join(<span class="str">"\n"</span>)
+<span class="kw">end</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Built With -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Built With the Chamomile Ecosystem</h2>
+      <p class="section-intro">Lazyrails is the flagship application for Chamomile, Petals, and Flourish.</p>
+      <div class="gem-grid">
+        <a href="/" class="gem-card">
+          <h3>chamomile</h3>
+          <span class="gem-role">Core Framework</span>
+          <p>Elm Architecture event loop powering the entire application. Model/Update/View with async commands.</p>
+          <span class="gem-link">chamomile-rb/chamomile</span>
+        </a>
+        <a href="/" class="gem-card">
+          <h3>petals</h3>
+          <span class="gem-role">Components</span>
+          <p>Viewport for scrolling, TextInput for filters &amp; console, Help for keybindings, Table for data.</p>
+          <span class="gem-link">chamomile-rb/petals</span>
+        </a>
+        <a href="/" class="gem-card">
+          <h3>flourish</h3>
+          <span class="gem-role">Styling</span>
+          <p>Borders, colors, layout composition. The split-pane interface and verb coloring are all Flourish.</p>
+          <span class="gem-link">chamomile-rb/flourish</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section lr-cta">
+    <div class="container" style="text-align: center;">
+      <h2>Try Lazyrails</h2>
+      <p class="section-intro">Install it in any Rails project and launch from the terminal.</p>
+      <div class="hero-install" style="margin-bottom: 24px;">
+        <code>gem install lazyrails</code>
+      </div>
+      <div class="hero-actions" style="justify-content: center;">
+        <a href="https://github.com/chamomile-rb/lazyrails" class="btn btn-primary lr-btn-primary">GitHub</a>
+        <a href="/" class="btn btn-secondary">Back to Chamomile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Chamomile Home</a>
+        <a href="https://github.com/chamomile-rb/lazyrails">Lazyrails</a>
+        <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a>
+        <a href="https://github.com/chamomile-rb/petals">Petals</a>
+        <a href="https://github.com/chamomile-rb/flourish">Flourish</a>
+      </div>
+      <div class="footer-links" style="margin-bottom: 16px;">
+        <a href="/docs/chamomile/">Chamomile API Docs</a>
+        <a href="/docs/petals/">Petals API Docs</a>
+        <a href="/docs/flourish/">Flourish API Docs</a>
+      </div>
+      <p class="footer-copy">MIT License</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next === 'light' ? '' : next);
+      localStorage.setItem('theme', next);
+    }
+
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+</body>
+</html>

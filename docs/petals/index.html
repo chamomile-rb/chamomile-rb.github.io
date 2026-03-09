@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Petals API</title>
+
+
+  <meta name="keywords" content="ruby,documentation,Petals API">
+
+    <meta
+      name="description"
+      content="Petals API: github. chamomile) framework."
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Petals API">
+
+
+  <meta
+    property="og:description"
+    content="API documentation for Petals API - Browse classes, modules, and methods"
+  >
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Petals API">
+
+
+  <meta
+    name="twitter:description"
+    content="API documentation for Petals API - Browse classes, modules, and methods"
+  >
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script
+  src="./js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="./js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="file has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    Petals API
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="./README_md.html">
+                README
+              </a>
+            </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="./Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="./Petals/Cursor.html">Cursor</a></code></li><li><code><a href="./Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="./Petals/Help.html">Help</a></code></li><li><code><a href="./Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="./Petals/List.html">List</a></code></li><li><code><a href="./Petals/LogView.html">LogView</a></code></li><li><code><a href="./Petals/Paginator.html">Paginator</a></code></li><li><code><a href="./Petals/Progress.html">Progress</a></code></li><li><code><a href="./Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="./Petals/Spinner.html">Spinner</a></code></li><li><code><a href="./Petals/Spinners.html">Spinners</a></code></li><li><code><a href="./Petals/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="./Petals/Table.html">Table</a></code></li><li><code><a href="./Petals/TextArea.html">TextArea</a></code></li><li><code><a href="./Petals/TextInput.html">TextInput</a></code></li><li><code><a href="./Petals/Timer.html">Timer</a></code></li><li><code><a href="./Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main">
+
+  
+<span id="label-Petals" class="legacy-anchor"></span>
+<h1 id="petals"><a href="#petals"><a href="Petals.html"><code>Petals</code></a></a></h1>
+
+<p>Reusable TUI components for the <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a> framework. Ported from Go’s <a href="https://github.com/charmbracelet/bubbles">Bubbles</a>.</p>
+
+<span id="label-Components" class="legacy-anchor"></span>
+<h2 id="components"><a href="#components">Components</a></h2>
+
+<table role="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Spinner</strong></td>
+<td>12 animation types (dots, lines, moon, etc.) with configurable FPS</td>
+</tr>
+<tr>
+<td><strong>TextInput</strong></td>
+<td>Single-line input with cursor movement, word editing, echo modes, paste support</td>
+</tr>
+<tr>
+<td><strong>TextArea</strong></td>
+<td>Multi-line editor with 2D cursor, line numbers, word ops, page navigation</td>
+</tr>
+<tr>
+<td><strong>Stopwatch</strong></td>
+<td>Count-up timer with start/stop/toggle/reset</td>
+</tr>
+<tr>
+<td><strong>Timer</strong></td>
+<td>Countdown timer with timeout notification</td>
+</tr>
+<tr>
+<td><strong>Paginator</strong></td>
+<td>Page navigation with dot or arabic display and key bindings</td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td>Blink/static/hide modes with focus/blur support</td>
+</tr>
+<tr>
+<td><strong>Help</strong></td>
+<td>Short/full help view renderer from key binding definitions</td>
+</tr>
+<tr>
+<td><strong>Progress</strong></td>
+<td>Spring-animated progress bar with gradient/color support</td>
+</tr>
+<tr>
+<td><strong>Viewport</strong></td>
+<td>Scrollable content pane with keyboard and mouse navigation</td>
+</tr>
+<tr>
+<td><strong>FilePicker</strong></td>
+<td>Async directory browser with extension filtering and stack history</td>
+</tr>
+<tr>
+<td><strong>Table</strong></td>
+<td>Scrollable, focus-gated data table with column definitions</td>
+</tr>
+<tr>
+<td><strong>List</strong></td>
+<td>Composable filterable list with fuzzy search, delegates, and status messages</td>
+</tr>
+</tbody>
+</table>
+
+<span id="label-Installation" class="legacy-anchor"></span>
+<h2 id="installation"><a href="#installation">Installation</a></h2>
+
+<pre class="ruby"><span class="ruby-comment"># Gemfile</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&quot;petals&quot;</span>
+</pre>
+
+<span id="label-Quick+Start" class="legacy-anchor"></span>
+<h2 id="quick-start"><a href="#quick-start">Quick Start</a></h2>
+
+<span id="label-Spinner" class="legacy-anchor"></span>
+<h3 id="spinner"><a href="#spinner">Spinner</a></h3>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;petals&quot;</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">MyApp</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
+    <span class="ruby-ivar">@spinner</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Spinner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">type:</span> <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Spinners</span><span class="ruby-operator">::</span><span class="ruby-constant">DOT</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start</span>
+    <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">tick_cmd</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyMsg</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">quit</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;q&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">SpinnerTickMsg</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">view</span>
+    <span class="ruby-node">&quot;#{@spinner.view} Loading...&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<span id="label-TextInput" class="legacy-anchor"></span>
+<h3 id="textinput"><a href="#textinput">TextInput</a></h3>
+
+<pre class="ruby"><span class="ruby-ivar">@input</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">TextInput</span>.<span class="ruby-identifier">new</span>(
+  <span class="ruby-value">prompt:</span> <span class="ruby-string">&quot;&gt; &quot;</span>,
+  <span class="ruby-value">placeholder:</span> <span class="ruby-string">&quot;Type something...&quot;</span>,
+  <span class="ruby-value">char_limit:</span> <span class="ruby-value">100</span>,
+)
+<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">focus</span>
+
+<span class="ruby-comment"># In update:</span>
+<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+
+<span class="ruby-comment"># In view:</span>
+<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;&gt; Hello world&quot; with reverse-video cursor</span>
+</pre>
+
+<span id="label-Timer+-26+Stopwatch" class="legacy-anchor"></span>
+<h3 id="timer--stopwatch"><a href="#timer--stopwatch">Timer &amp; Stopwatch</a></h3>
+
+<pre class="ruby"><span class="ruby-comment"># Countdown from 30 seconds</span>
+<span class="ruby-ivar">@timer</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Timer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">timeout:</span> <span class="ruby-value">30</span>, <span class="ruby-value">interval:</span> <span class="ruby-value">1.0</span>)
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">start_cmd</span>
+
+<span class="ruby-comment"># In update — receives TimerTickMsg, returns TimerTimeoutMsg when done</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">timed_out?</span>  <span class="ruby-comment"># true when countdown reaches 0</span>
+
+<span class="ruby-comment"># Count-up stopwatch</span>
+<span class="ruby-ivar">@stopwatch</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Stopwatch</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">interval:</span> <span class="ruby-value">1.0</span>)
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@stopwatch</span>.<span class="ruby-identifier">start_cmd</span>
+
+<span class="ruby-comment"># Both render as &quot;MM:SS&quot;</span>
+<span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">view</span>      <span class="ruby-comment"># &quot;00:25&quot;</span>
+<span class="ruby-ivar">@stopwatch</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;01:03&quot;</span>
+</pre>
+
+<span id="label-Viewport" class="legacy-anchor"></span>
+<h3 id="viewport"><a href="#viewport">Viewport</a></h3>
+
+<pre class="ruby"><span class="ruby-ivar">@viewport</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Viewport</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">width:</span> <span class="ruby-value">80</span>, <span class="ruby-value">height:</span> <span class="ruby-value">20</span>)
+<span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">set_content</span>(<span class="ruby-identifier">long_text</span>)
+
+<span class="ruby-comment"># In update — responds to j/k, pgup/pgdn, g/G, mouse wheel</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+
+<span class="ruby-comment"># In view:</span>
+<span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># visible portion of content</span>
+</pre>
+
+<span id="label-Table" class="legacy-anchor"></span>
+<h3 id="table"><a href="#table">Table</a></h3>
+
+<pre class="ruby"><span class="ruby-identifier">columns</span> = [
+  <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span>),
+  <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Size&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">10</span>),
+]
+<span class="ruby-identifier">rows</span> = [[<span class="ruby-string">&quot;style.rb&quot;</span>, <span class="ruby-string">&quot;19.6 KB&quot;</span>], [<span class="ruby-string">&quot;wrap.rb&quot;</span>, <span class="ruby-string">&quot;4.2 KB&quot;</span>]]
+
+<span class="ruby-ivar">@table</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">columns:</span> <span class="ruby-identifier">columns</span>, <span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>, <span class="ruby-value">height:</span> <span class="ruby-value">10</span>)
+<span class="ruby-ivar">@table</span>.<span class="ruby-identifier">focus</span>
+
+<span class="ruby-comment"># In update — responds to up/down/g/G</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+
+<span class="ruby-comment"># In view:</span>
+<span class="ruby-ivar">@table</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># formatted table with highlighted cursor row</span>
+</pre>
+
+<span id="label-List" class="legacy-anchor"></span>
+<h3 id="list"><a href="#list">List</a></h3>
+
+<pre class="ruby"><span class="ruby-identifier">items</span> = [<span class="ruby-string">&quot;Apple&quot;</span>, <span class="ruby-string">&quot;Banana&quot;</span>, <span class="ruby-string">&quot;Cherry&quot;</span>, <span class="ruby-string">&quot;Date&quot;</span>, <span class="ruby-string">&quot;Fig&quot;</span>]
+<span class="ruby-identifier">delegates</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">List</span><span class="ruby-operator">::</span><span class="ruby-constant">DefaultItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-identifier">i</span>) }
+
+<span class="ruby-ivar">@list</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">items:</span> <span class="ruby-identifier">delegates</span>, <span class="ruby-value">width:</span> <span class="ruby-value">30</span>, <span class="ruby-value">height:</span> <span class="ruby-value">15</span>)
+<span class="ruby-ivar">@list</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Fruits&quot;</span>
+
+<span class="ruby-comment"># In update — responds to arrows, /, filter input</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+
+<span class="ruby-comment"># In view — rendered list with filter bar, pagination, help</span>
+<span class="ruby-ivar">@list</span>.<span class="ruby-identifier">view</span>
+</pre>
+
+<span id="label-Paginator" class="legacy-anchor"></span>
+<h3 id="paginator"><a href="#paginator">Paginator</a></h3>
+
+<pre class="ruby"><span class="ruby-ivar">@pager</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Paginator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">total_pages:</span> <span class="ruby-value">5</span>)
+
+<span class="ruby-comment"># Navigate</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">next_page</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">prev_page</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">key_msg</span>)  <span class="ruby-comment"># responds to arrows, h/l, page up/down</span>
+
+<span class="ruby-comment"># Display</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;○ ● ○ ○ ○&quot; (dot mode)</span>
+
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">type</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Paginator</span><span class="ruby-operator">::</span><span class="ruby-constant">TYPE_ARABIC</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;2/5&quot;</span>
+
+<span class="ruby-comment"># Slice arrays by page</span>
+<span class="ruby-identifier">start</span>, <span class="ruby-identifier">length</span> = <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">slice_bounds</span>(<span class="ruby-identifier">items</span>.<span class="ruby-identifier">length</span>)
+<span class="ruby-identifier">page_items</span> = <span class="ruby-identifier">items</span>[<span class="ruby-identifier">start</span>, <span class="ruby-identifier">length</span>]
+</pre>
+
+<span id="label-Component+Protocol" class="legacy-anchor"></span>
+<h2 id="component-protocol"><a href="#component-protocol">Component Protocol</a></h2>
+
+<p>All components follow the Elm Architecture pattern:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Initialize</span>
+<span class="ruby-identifier">component</span> = <span class="ruby-constant">Component</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span><span class="ruby-operator">...</span>)
+
+<span class="ruby-comment"># Update — returns a command or nil</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-identifier">component</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+
+<span class="ruby-comment"># Render — returns a String</span>
+<span class="ruby-identifier">component</span>.<span class="ruby-identifier">view</span>
+</pre>
+
+<p>Components are mutable classes — <code>update</code> modifies internal state and returns a command (or nil), so no model reassignment is needed.</p>
+
+<span id="label-Key+Binding" class="legacy-anchor"></span>
+<h2 id="key-binding"><a href="#key-binding">Key Binding</a></h2>
+
+<p>Components use <code>KeyBinding</code> for configurable key maps:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Check if a key message matches an action</span>
+<span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyBinding</span>.<span class="ruby-identifier">key_matches?</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-ivar">@key_map</span>, <span class="ruby-value">:line_start</span>)
+
+<span class="ruby-comment"># Customize by passing your own key_map to any component</span>
+</pre>
+
+<span id="label-Examples" class="legacy-anchor"></span>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+
+<pre class="sh">ruby examples/spinner_demo.rb          # animated spinner types
+ruby examples/text_input_demo.rb       # interactive text input
+ruby examples/combined_demo.rb         # spinner + text input together
+ruby examples/timer_stopwatch_demo.rb  # countdown + count-up side by side
+ruby examples/kitchen_sink.rb          # all components in one demo
+ruby examples/smoke_test.rb            # headless test of all components</pre>
+
+<span id="label-Ecosystem" class="legacy-anchor"></span>
+<h2 id="ecosystem"><a href="#ecosystem">Ecosystem</a></h2>
+
+<table role="table">
+<thead>
+<tr>
+<th>Gem</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://github.com/chamomile-rb/chamomile">chamomile</a></strong></td>
+<td>Core TUI framework (Elm Architecture event loop)</td>
+</tr>
+<tr>
+<td><strong>petals</strong></td>
+<td>Reusable components (this gem)</td>
+</tr>
+<tr>
+<td><strong><a href="https://github.com/chamomile-rb/flourish">flourish</a></strong></td>
+<td>Terminal styling — colors, borders, padding, layout composition</td>
+</tr>
+</tbody>
+</table>
+
+<span id="label-Development" class="legacy-anchor"></span>
+<h2 id="development"><a href="#development">Development</a></h2>
+
+<pre class="sh">bundle install
+bundle exec rspec        # run tests
+bundle exec rubocop      # lint</pre>
+
+<span id="label-License" class="legacy-anchor"></span>
+<h2 id="license"><a href="#license">License</a></h2>
+
+<p><a href="LICENSE">MIT</a></p>
+
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+

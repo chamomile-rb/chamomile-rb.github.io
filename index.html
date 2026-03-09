@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamomile — Ruby TUI Framework</title>
+  <meta name="description" content="Build rich, interactive terminal applications in Ruby using the Elm Architecture. Chamomile is a reactive TUI framework with composable components and terminal styling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F33C;</text></svg>">
+</head>
+<body>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <span class="icon-moon">&#x1F319;</span>
+    <span class="icon-sun">&#x2600;&#xFE0F;</span>
+  </button>
+
+  <!-- Hero — split layout -->
+  <header class="hero">
+    <div class="container hero-split">
+      <div class="hero-left">
+        <span class="hero-flower">&#x1F33C;</span>
+        <h1 class="hero-title"><span class="hero-title-accent">Chamomile</span></h1>
+        <p class="hero-subtitle">Build terminal apps in pure ruby.</p>
+        <p class="hero-tagline">Inspired by <a href="https://github.com/charmbracelet/bubbletea">Bubbletea</a>. Using <a href="https://github.com/chamomile-rb/petals">Petals</a> and <a href="https://github.com/chamomile-rb/flourish">Flourish</a>.</p>
+        <div class="hero-actions">
+          <a href="https://github.com/chamomile-rb/chamomile" class="btn btn-primary">View on GitHub</a>
+          <a href="#ecosystem" class="btn btn-secondary">Explore Ecosystem</a>
+        </div>
+        <div class="hero-install">
+          <code>gem install chamomile</code>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">hello.rb</span>
+          </div>
+          <pre><code><span class="kw">require</span> <span class="str">"chamomile"</span>
+
+<span class="kw">class</span> <span class="type">Hello</span>
+  <span class="kw">include</span> <span class="type">Chamomile::Model</span>
+  <span class="kw">include</span> <span class="type">Chamomile::Commands</span>
+
+  <span class="kw">def</span> <span class="fn">update</span>(msg)
+    <span class="kw">case</span> msg
+    <span class="kw">when</span> <span class="type">Chamomile::KeyMsg</span>
+      <span class="kw">return</span> quit <span class="kw">if</span> msg.key == <span class="str">"q"</span>
+    <span class="kw">end</span>
+    <span class="kw">nil</span>
+  <span class="kw">end</span>
+
+  <span class="kw">def</span> <span class="fn">view</span>
+    <span class="str">"Hello from Chamomile!\n\nPress q to quit."</span>
+  <span class="kw">end</span>
+<span class="kw">end</span>
+
+<span class="type">Chamomile</span>.run(<span class="type">Hello</span>.new)</code></pre>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <h2>How It Works</h2>
+      <p class="section-intro">The Elm Architecture, adapted for Ruby.</p>
+      <div class="arch-grid">
+        <div class="arch-step">
+          <div class="arch-num">1</div>
+          <h3>Model</h3>
+          <p>Your class holds state. Include <code>Chamomile::Model</code> and define <code>update</code> and <code>view</code>.</p>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">2</div>
+          <h3>Update</h3>
+          <p>Receives messages &mdash; key presses, mouse events, ticks. Returns a command or nil.</p>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">3</div>
+          <h3>View</h3>
+          <p>Returns a string. The renderer diffs it and only redraws what changed.</p>
+        </div>
+        <div class="arch-step">
+          <div class="arch-num">4</div>
+          <h3>Commands</h3>
+          <p>Lambdas on a thread pool. They return messages that feed back into update.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Batteries Included -->
+  <section id="commands" class="section section-alt">
+    <div class="container">
+      <h2>Batteries Included</h2>
+      <p class="section-intro">Everything is a command. Async by default, composable by design.</p>
+
+      <div class="batteries-examples">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">timers &amp; ticks</span>
+          </div>
+          <pre><code><span class="kw">def</span> <span class="fn">start</span>
+  tick(<span class="num">1.0</span>)  <span class="comment"># fire a TickMsg after 1s</span>
+<span class="kw">end</span>
+
+<span class="kw">def</span> <span class="fn">update</span>(msg)
+  <span class="kw">case</span> msg
+  <span class="kw">when</span> <span class="type">Chamomile::TickMsg</span>
+    <span class="ivar">@seconds</span> += <span class="num">1</span>
+    tick(<span class="num">1.0</span>)  <span class="comment"># keep ticking</span>
+  <span class="kw">end</span>
+<span class="kw">end</span></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">shell &amp; exec</span>
+          </div>
+          <pre><code><span class="comment"># Run a command, get typed results</span>
+shell(<span class="str">"git status"</span>, envelope: <span class="sym">:git</span>)
+
+<span class="comment"># Suspend the TUI, run an editor</span>
+exec(<span class="str">"vim"</span>, <span class="str">"file.rb"</span>)
+
+<span class="comment"># Handle the result in update</span>
+<span class="kw">when</span> <span class="type">Chamomile::ShellResult</span>
+  <span class="kw">if</span> msg.envelope == <span class="sym">:git</span>
+    <span class="ivar">@output</span> = msg.stdout
+  <span class="kw">end</span></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">cancel &amp; stream</span>
+          </div>
+          <pre><code><span class="comment"># Cooperative cancellation</span>
+token, cmd = cancellable { |t|
+  <span class="kw">until</span> t.cancelled?
+    do_work
+  <span class="kw">end</span>
+}
+cancel(token)
+
+<span class="comment"># Streaming — emit many messages</span>
+token, cmd = stream { |push, t|
+  lines.each { |l| push.(l) }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="commands-grid">
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-quit" class="cmd-tag">quit</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-batch" class="cmd-tag">batch</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-sequence" class="cmd-tag">sequence</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-tick" class="cmd-tag">tick</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-every" class="cmd-tag">every</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-deliver" class="cmd-tag">deliver</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-cancel" class="cmd-tag">cancel</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-stream" class="cmd-tag">stream</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-shell" class="cmd-tag">shell</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-exec" class="cmd-tag">exec</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-timer" class="cmd-tag">timer</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-map" class="cmd-tag">map</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-window_title" class="cmd-tag">window_title</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-cursor_shape" class="cmd-tag">cursor_shape</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-show_cursor" class="cmd-tag">show_cursor</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-hide_cursor" class="cmd-tag">hide_cursor</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-enter_alt_screen" class="cmd-tag">enter_alt_screen</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-exit_alt_screen" class="cmd-tag">exit_alt_screen</a>
+        <a href="/docs/chamomile/Chamomile/Commands.html#method-c-println" class="cmd-tag">println</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem -->
+  <section id="ecosystem" class="section">
+    <div class="container">
+      <h2>The Ecosystem</h2>
+      <p class="section-intro">Three gems and a flagship app. Everything you need for terminal UIs in Ruby.</p>
+      <div class="gem-grid">
+
+        <a href="https://github.com/chamomile-rb/chamomile" class="gem-card">
+          <h3>chamomile</h3>
+          <span class="gem-role">Core Framework</span>
+          <p>Elm Architecture event loop with async commands, signal handling, diff rendering, mouse support, and full terminal control.</p>
+          <ul class="gem-highlights">
+            <li>Model / Update / View pattern</li>
+            <li>Thread pool command execution</li>
+            <li>FPS-throttled diff renderer</li>
+            <li>Mouse, paste, focus, resize</li>
+            <li>Cooperative cancellation &amp; streaming</li>
+          </ul>
+          <span class="gem-link">chamomile-rb/chamomile</span>
+        </a>
+
+        <a href="https://github.com/chamomile-rb/petals" class="gem-card">
+          <h3>petals</h3>
+          <span class="gem-role">Components</span>
+          <p>13 reusable TUI components that follow the same update/view protocol. Drop in and go &mdash; they handle their own state.</p>
+          <ul class="gem-highlights">
+            <li>TextInput &amp; TextArea</li>
+            <li>Spinner, Timer, Stopwatch, Progress</li>
+            <li>Viewport, Table, List, FilePicker</li>
+            <li>Paginator, Cursor, Help</li>
+          </ul>
+          <span class="gem-link">chamomile-rb/petals</span>
+        </a>
+
+        <a href="https://github.com/chamomile-rb/flourish" class="gem-card">
+          <h3>flourish</h3>
+          <span class="gem-role">Styling</span>
+          <p>CSS-like box model for the terminal. Colors, borders, padding, alignment, and layout composition. Zero dependencies.</p>
+          <ul class="gem-highlights">
+            <li>True color, ANSI 256, basic ANSI</li>
+            <li>10 border presets, per-side colors</li>
+            <li>Padding, margin, width, alignment</li>
+            <li>Horizontal/vertical join &amp; place</li>
+          </ul>
+          <span class="gem-link">chamomile-rb/flourish</span>
+        </a>
+
+        <a href="/lazyrails" class="gem-card gem-card-full">
+          <h3>lazyrails</h3>
+          <span class="gem-role">Flagship App</span>
+          <p>A lazygit-style TUI for Rails developers. Routes, migrations, models, tests, server, gems &mdash; all in one split-pane interface.</p>
+          <ul class="gem-highlights">
+            <li>13+ navigable panels</li>
+            <li>Live server log streaming</li>
+            <li>Command log with undo support</li>
+            <li>Smart introspection via Rails APIs</li>
+          </ul>
+          <span class="gem-link">chamomile-rb/lazyrails</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Components (Petals) -->
+  <section id="components" class="section section-alt">
+    <div class="container">
+      <h2>Components</h2>
+      <p class="section-intro">13 ready-made components from <a href="https://github.com/chamomile-rb/petals">Petals</a>. Same update/view protocol.</p>
+      <div class="component-grid">
+        <div class="component">
+          <span class="component-name">TextInput</span>
+          <span class="component-desc">Single-line input with cursor, word editing, echo modes, paste</span>
+        </div>
+        <div class="component">
+          <span class="component-name">TextArea</span>
+          <span class="component-desc">Multi-line editor with line numbers, 2D cursor, page nav</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Viewport</span>
+          <span class="component-desc">Scrollable content pane with keyboard and mouse navigation</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Table</span>
+          <span class="component-desc">Scrollable data table with column definitions and focus</span>
+        </div>
+        <div class="component">
+          <span class="component-name">List</span>
+          <span class="component-desc">Filterable list with fuzzy search, delegates, pagination</span>
+        </div>
+        <div class="component">
+          <span class="component-name">FilePicker</span>
+          <span class="component-desc">Async directory browser with extension filtering</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Spinner</span>
+          <span class="component-desc">12 animation types &mdash; dots, lines, moon, and more</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Progress</span>
+          <span class="component-desc">Spring-animated progress bar with gradient colors</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Timer</span>
+          <span class="component-desc">Countdown with timeout notification</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Stopwatch</span>
+          <span class="component-desc">Count-up timer with start/stop/reset</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Paginator</span>
+          <span class="component-desc">Dot or arabic page navigation</span>
+        </div>
+        <div class="component">
+          <span class="component-name">Cursor</span>
+          <span class="component-desc">Blink/static/hide modes with focus support</span>
+        </div>
+        <div class="component component-full">
+          <span class="component-name">Help</span>
+          <span class="component-desc">Short/full help view from key binding definitions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/chamomile-rb">GitHub Org</a>
+        <a href="/lazyrails">Lazyrails</a>
+        <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a>
+        <a href="https://github.com/chamomile-rb/petals">Petals</a>
+        <a href="https://github.com/chamomile-rb/flourish">Flourish</a>
+      </div>
+      <div class="footer-links" style="margin-bottom: 16px;">
+        <a href="/docs/chamomile/">Chamomile API Docs</a>
+        <a href="/docs/petals/">Petals API Docs</a>
+        <a href="/docs/flourish/">Flourish API Docs</a>
+      </div>
+      <p class="footer-copy">MIT License</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next === 'light' ? '' : next);
+      localStorage.setItem('theme', next);
+    }
+
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+</body>
+</html>

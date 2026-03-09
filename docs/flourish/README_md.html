@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>README - Flourish API</title>
+
+
+  <meta name="keywords" content="ruby,documentation,README">
+  <meta
+    name="description"
+    content="README: Flourish Terminal styling library for Ruby. CSS-like box model with colors, borders, padding, alignment, and layout composition."
+  >
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="README - Flourish API">
+
+
+
+    <meta property="og:description" content="Flourish Terminal styling library for Ruby. CSS-like box model with colors, borders, padding, alignment, and layout composition.">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="README - Flourish API">
+
+
+
+    <meta name="twitter:description" content="Flourish Terminal styling library for Ruby. CSS-like box model with colors, borders, padding, alignment, and layout composition.">
+
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script
+  src="./js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="./js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="file has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    Flourish API
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="./README_md.html">
+                README
+              </a>
+            </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="./Flourish.html">Flourish</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Flourish/ANSI.html">ANSI</a></code></li><li><code><a href="./Flourish/Align.html">Align</a></code></li><li><code><a href="./Flourish/Border.html">Border</a></code></li><li><code><a href="./Flourish/Color.html">Color</a></code></li><li><code><a href="./Flourish/ColorProfile.html">ColorProfile</a></code></li><li><code><a href="./Flourish/Join.html">Join</a></code></li><li><code><a href="./Flourish/Place.html">Place</a></code></li><li><code><a href="./Flourish/Style.html">Style</a></code></li><li><code><a href="./Flourish/Wrap.html">Wrap</a></code></li></ul></details></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main" aria-label="Page README.md">
+
+<span id="label-Flourish" class="legacy-anchor"></span>
+<h1 id="flourish"><a href="#flourish"><a href="Flourish.html"><code>Flourish</code></a></a></h1>
+
+<p>Terminal styling library for Ruby. CSS-like box model with colors, borders, padding, alignment, and layout composition. Inspired by Go’s <a href="https://github.com/charmbracelet/lipgloss">Lip Gloss</a>.</p>
+
+<p>Part of the <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a> ecosystem. Zero runtime dependencies.</p>
+
+<span id="label-Installation" class="legacy-anchor"></span>
+<h2 id="installation"><a href="#installation">Installation</a></h2>
+
+<pre class="ruby"><span class="ruby-comment"># Gemfile</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&quot;flourish&quot;</span>
+</pre>
+
+<span id="label-Quick+Start" class="legacy-anchor"></span>
+<h2 id="quick-start"><a href="#quick-start">Quick Start</a></h2>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;flourish&quot;</span>
+
+<span class="ruby-identifier">style</span> = <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>
+  .<span class="ruby-identifier">bold</span>
+  .<span class="ruby-identifier">foreground</span>(<span class="ruby-string">&quot;#7d56f4&quot;</span>)
+  .<span class="ruby-identifier">padding</span>(<span class="ruby-value">1</span>, <span class="ruby-value">2</span>)
+  .<span class="ruby-identifier">border</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Border</span><span class="ruby-operator">::</span><span class="ruby-constant">ROUNDED</span>)
+  .<span class="ruby-identifier">border_foreground</span>(<span class="ruby-string">&quot;#7d56f4&quot;</span>)
+
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">style</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;Hello, World!&quot;</span>)
+</pre>
+
+<span id="label-Features" class="legacy-anchor"></span>
+<h2 id="features"><a href="#features">Features</a></h2>
+
+<span id="label-Text+Attributes" class="legacy-anchor"></span>
+<h3 id="text-attributes"><a href="#text-attributes">Text Attributes</a></h3>
+
+<pre class="ruby"><span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">bold</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;bold&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">italic</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;italic&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">faint</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;faint&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">underline</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;underline&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">strikethrough</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;strikethrough&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;reverse video&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">blink</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;blink&quot;</span>)
+</pre>
+
+<span id="label-Colors" class="legacy-anchor"></span>
+<h3 id="colors"><a href="#colors">Colors</a></h3>
+
+<pre class="ruby"><span class="ruby-comment"># True color (hex)</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">foreground</span>(<span class="ruby-string">&quot;#ff0000&quot;</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;red&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">background</span>(<span class="ruby-string">&quot;#0000ff&quot;</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;blue bg&quot;</span>)
+
+<span class="ruby-comment"># ANSI 256</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">foreground</span>(<span class="ruby-string">&quot;196&quot;</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;ansi256 red&quot;</span>)
+
+<span class="ruby-comment"># Basic ANSI (0-15)</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">foreground</span>(<span class="ruby-string">&quot;1&quot;</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;ansi red&quot;</span>)
+</pre>
+
+<span id="label-Borders" class="legacy-anchor"></span>
+<h3 id="borders"><a href="#borders">Borders</a></h3>
+
+<p>10 built-in presets: <code>NORMAL</code>, <code>ROUNDED</code>, <code>THICK</code>, <code>DOUBLE</code>, <code>BLOCK</code>, <code>OUTER_HALF_BLOCK</code>, <code>INNER_HALF_BLOCK</code>, <code>HIDDEN</code>, <code>ASCII</code>, <code>MARKDOWN</code></p>
+
+<pre class="ruby"><span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>
+  .<span class="ruby-identifier">border</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Border</span><span class="ruby-operator">::</span><span class="ruby-constant">ROUNDED</span>)
+  .<span class="ruby-identifier">border_foreground</span>(<span class="ruby-string">&quot;#7d56f4&quot;</span>)
+  .<span class="ruby-identifier">padding</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1</span>)
+  .<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;rounded box&quot;</span>)
+
+<span class="ruby-comment"># Per-side border control</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>
+  .<span class="ruby-identifier">border</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Border</span><span class="ruby-operator">::</span><span class="ruby-constant">NORMAL</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>)  <span class="ruby-comment"># top, right, bottom, left</span>
+  .<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;horizontal lines only&quot;</span>)
+
+<span class="ruby-comment"># Per-side colors (top, right, bottom, left)</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>
+  .<span class="ruby-identifier">border</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Border</span><span class="ruby-operator">::</span><span class="ruby-constant">ROUNDED</span>)
+  .<span class="ruby-identifier">border_foreground</span>(<span class="ruby-string">&quot;#ff0000&quot;</span>, <span class="ruby-string">&quot;#00ff00&quot;</span>, <span class="ruby-string">&quot;#0000ff&quot;</span>, <span class="ruby-string">&quot;#ffff00&quot;</span>)
+  .<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;rainbow border&quot;</span>)
+</pre>
+
+<span id="label-Dimensions+-26+Spacing" class="legacy-anchor"></span>
+<h3 id="dimensions--spacing"><a href="#dimensions--spacing">Dimensions &amp; Spacing</a></h3>
+
+<pre class="ruby"><span class="ruby-comment"># Fixed dimensions</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">width</span>(<span class="ruby-value">40</span>).<span class="ruby-identifier">height</span>(<span class="ruby-value">10</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;fixed box&quot;</span>)
+
+<span class="ruby-comment"># Max constraints</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">max_width</span>(<span class="ruby-value">60</span>).<span class="ruby-identifier">render</span>(<span class="ruby-identifier">long_text</span>)
+
+<span class="ruby-comment"># Padding and margin (CSS shorthand: 1, 2, 3, or 4 args)</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">padding</span>(<span class="ruby-value">1</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">margin</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;spaced&quot;</span>)
+</pre>
+
+<span id="label-Alignment" class="legacy-anchor"></span>
+<h3 id="alignment"><a href="#alignment">Alignment</a></h3>
+
+<pre class="ruby"><span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">width</span>(<span class="ruby-value">40</span>).<span class="ruby-identifier">align_horizontal</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;centered&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">height</span>(<span class="ruby-value">10</span>).<span class="ruby-identifier">align_vertical</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;vertically centered&quot;</span>)
+
+<span class="ruby-comment"># Position constants: LEFT/TOP = 0.0, CENTER = 0.5, RIGHT/BOTTOM = 1.0</span>
+</pre>
+
+<span id="label-Layout+Composition" class="legacy-anchor"></span>
+<h3 id="layout-composition"><a href="#layout-composition">Layout Composition</a></h3>
+
+<pre class="ruby"><span class="ruby-comment"># Side by side</span>
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">join_horizontal</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">TOP</span>, <span class="ruby-identifier">box_a</span>, <span class="ruby-identifier">box_b</span>, <span class="ruby-identifier">box_c</span>)
+
+<span class="ruby-comment"># Stacked</span>
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">join_vertical</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">LEFT</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">footer</span>)
+
+<span class="ruby-comment"># Place content in a fixed-size box</span>
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">place</span>(<span class="ruby-value">80</span>, <span class="ruby-value">24</span>, <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>, <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>, <span class="ruby-identifier">content</span>)
+</pre>
+
+<span id="label-Style+Inheritance+-26+Copy" class="legacy-anchor"></span>
+<h3 id="style-inheritance--copy"><a href="#style-inheritance--copy">Style Inheritance &amp; Copy</a></h3>
+
+<pre class="ruby"><span class="ruby-identifier">base</span> = <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">bold</span>.<span class="ruby-identifier">foreground</span>(<span class="ruby-string">&quot;#fff&quot;</span>)
+<span class="ruby-identifier">derived</span> = <span class="ruby-identifier">base</span>.<span class="ruby-identifier">copy</span>.<span class="ruby-identifier">background</span>(<span class="ruby-string">&quot;#333&quot;</span>)  <span class="ruby-comment"># independent copy</span>
+<span class="ruby-identifier">other</span> = <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">inherit</span>(<span class="ruby-identifier">base</span>)  <span class="ruby-comment"># inherit unset props</span>
+</pre>
+
+<span id="label-ANSI+Utilities" class="legacy-anchor"></span>
+<h3 id="ansi-utilities"><a href="#ansi-utilities">ANSI Utilities</a></h3>
+
+<pre class="ruby"><span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">strip</span>(<span class="ruby-string">&quot;\e[1mhello\e[0m&quot;</span>)      <span class="ruby-comment"># &quot;hello&quot;</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">printable_width</span>(<span class="ruby-string">&quot;hello&quot;</span>)        <span class="ruby-comment"># 5 (CJK-aware)</span>
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">height</span>(<span class="ruby-string">&quot;line1\nline2\nline3&quot;</span>)   <span class="ruby-comment"># 3</span>
+</pre>
+
+<span id="label-Color+Profile+Detection" class="legacy-anchor"></span>
+<h3 id="color-profile-detection"><a href="#color-profile-detection">Color Profile Detection</a></h3>
+
+<pre class="ruby"><span class="ruby-identifier">profile</span> = <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">ColorProfile</span>.<span class="ruby-identifier">detect</span>  <span class="ruby-comment"># auto-detect terminal capabilities</span>
+<span class="ruby-identifier">color</span> = <span class="ruby-identifier">profile</span>.<span class="ruby-identifier">color</span>(<span class="ruby-string">&quot;#ff0000&quot;</span>)          <span class="ruby-comment"># downsamples if needed (TrueColor -&gt; 256 -&gt; 16)</span>
+</pre>
+
+<span id="label-Examples" class="legacy-anchor"></span>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+
+<pre class="sh">ruby examples/kitchen_sink.rb            # comprehensive feature showcase (21 features)
+ruby examples/layout_demo.rb             # styled box composition
+ruby examples/layout_demo_interactive.rb # lazygit-style multi-panel UI (requires chamomile + petals)
+ruby examples/smoke_test.rb              # headless test of all features</pre>
+
+<span id="label-Interactive+Layout+Demo" class="legacy-anchor"></span>
+<h3 id="interactive-layout-demo"><a href="#interactive-layout-demo">Interactive Layout Demo</a></h3>
+
+<p>The <code>layout_demo_interactive.rb</code> example combines all three gems to create a Lazygit-style multi-panel interface:</p>
+<ul><li>
+<p>5 stacked left panels + 1 large detail panel</p>
+</li><li>
+<p>Tab/Shift+Tab to cycle focus between panels</p>
+</li><li>
+<p>j/k to scroll within panels</p>
+</li><li>
+<p>Context-sensitive detail pane with fake diffs</p>
+</li><li>
+<p>Terminal resize support</p>
+</li></ul>
+
+<span id="label-Ecosystem" class="legacy-anchor"></span>
+<h2 id="ecosystem"><a href="#ecosystem">Ecosystem</a></h2>
+
+<table role="table">
+<thead>
+<tr>
+<th>Gem</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://github.com/chamomile-rb/chamomile">chamomile</a></strong></td>
+<td>Core TUI framework (Elm Architecture event loop)</td>
+</tr>
+<tr>
+<td><strong><a href="https://github.com/chamomile-rb/petals">petals</a></strong></td>
+<td>Reusable TUI components — Spinner, TextInput, Viewport, Table, List, and more</td>
+</tr>
+<tr>
+<td><strong>flourish</strong></td>
+<td>Terminal styling (this gem)</td>
+</tr>
+</tbody>
+</table>
+
+<span id="label-Development" class="legacy-anchor"></span>
+<h2 id="development"><a href="#development">Development</a></h2>
+
+<pre class="sh">bundle install
+bundle exec rspec        # run tests
+bundle exec rubocop      # lint</pre>
+
+<span id="label-License" class="legacy-anchor"></span>
+<h2 id="license"><a href="#license">License</a></h2>
+
+<p><a href="LICENSE">MIT</a></p>
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+

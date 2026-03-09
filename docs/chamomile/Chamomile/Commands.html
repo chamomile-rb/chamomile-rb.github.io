@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>module Chamomile::Commands - Chamomile API</title>
+
+
+  <meta
+    name="keywords"
+    content="ruby,module,Chamomile::Commands"
+  >
+
+    <meta
+      name="description"
+      content="module Chamomile::Commands: Helper methods for creating command lambdas (quit, batch, tick, etc."
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="module Chamomile::Commands - Chamomile API">
+
+
+
+    <meta property="og:description" content="Helper methods for creating command lambdas (quit, batch, tick, etc.">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="module Chamomile::Commands - Chamomile API">
+
+
+
+    <meta name="twitter:description" content="Helper methods for creating command lambdas (quit, batch, tick, etc.">
+
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script
+  src="../js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="../js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="../css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="module has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="../index.html" class="navbar-brand">
+    Chamomile API
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" >
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="../README_md.html">
+                README
+              </a>
+            </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-c-batch">batch</a></li>
+
+        <li ><a href="#method-c-cancel">cancel</a></li>
+
+        <li ><a href="#method-c-cancellable">cancellable</a></li>
+
+        <li ><a href="#method-c-clear_screen">clear_screen</a></li>
+
+        <li ><a href="#method-c-cmd">cmd</a></li>
+
+        <li ><a href="#method-c-cursor_position">cursor_position</a></li>
+
+        <li ><a href="#method-c-cursor_shape">cursor_shape</a></li>
+
+        <li ><a href="#method-c-deliver">deliver</a></li>
+
+        <li ><a href="#method-c-disable_bracketed_paste">disable_bracketed_paste</a></li>
+
+        <li ><a href="#method-c-disable_mouse">disable_mouse</a></li>
+
+        <li ><a href="#method-c-disable_report_focus">disable_report_focus</a></li>
+
+        <li ><a href="#method-c-enable_bracketed_paste">enable_bracketed_paste</a></li>
+
+        <li ><a href="#method-c-enable_mouse_all_motion">enable_mouse_all_motion</a></li>
+
+        <li ><a href="#method-c-enable_mouse_cell_motion">enable_mouse_cell_motion</a></li>
+
+        <li ><a href="#method-c-enable_report_focus">enable_report_focus</a></li>
+
+        <li ><a href="#method-c-enter_alt_screen">enter_alt_screen</a></li>
+
+        <li ><a href="#method-c-every">every</a></li>
+
+        <li ><a href="#method-c-exec">exec</a></li>
+
+        <li ><a href="#method-c-exit_alt_screen">exit_alt_screen</a></li>
+
+        <li ><a href="#method-c-hide_cursor">hide_cursor</a></li>
+
+        <li ><a href="#method-c-map">map</a></li>
+
+        <li ><a href="#method-c-none">none</a></li>
+
+        <li ><a href="#method-c-println">println</a></li>
+
+        <li ><a href="#method-c-quit">quit</a></li>
+
+        <li ><a href="#method-c-request_window_size">request_window_size</a></li>
+
+        <li ><a href="#method-c-sequence">sequence</a></li>
+
+        <li ><a href="#method-c-shell">shell</a></li>
+
+        <li ><a href="#method-c-show_cursor">show_cursor</a></li>
+
+        <li ><a href="#method-c-stream">stream</a></li>
+
+        <li ><a href="#method-c-tick">tick</a></li>
+
+        <li ><a href="#method-c-timer">timer</a></li>
+
+        <li ><a href="#method-c-window_title">window_title</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Chamomile.html">Chamomile</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/CancelToken.html">CancelToken</a></code></li><li><code><a href="../Chamomile/Commands.html">Commands</a></code></li><li><code><a href="../Chamomile/EscapeParser.html">EscapeParser</a></code></li><li><code><a href="../Chamomile/InputReader.html">InputReader</a></code></li><li><code><a href="../Chamomile/KeyMap.html">KeyMap</a></code></li><li><code><a href="../Chamomile/Keymap.html">Keymap</a></code></li><li><details><summary><code><a href="../Chamomile/Model.html">Model</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Model/ClassMethods.html">ClassMethods</a></code></li><li><code><a href="../Chamomile/Model/FrozenModelEnforcement.html">FrozenModelEnforcement</a></code></li></ul></details></li><li><code><a href="../Chamomile/NullRenderer.html">NullRenderer</a></code></li><li><code><a href="../Chamomile/Program.html">Program</a></code></li><li><code><a href="../Chamomile/Renderer.html">Renderer</a></code></li><li><details><summary><code><a href="../Chamomile/Router.html">Router</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Router/ClassMethods.html">ClassMethods</a></code></li></ul></details></li><li><details><summary><code><a href="../Chamomile/Testing.html">Testing</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Testing/Harness.html">Harness</a></code></li><li><code><a href="../Chamomile/Testing/SnapshotMismatch.html">SnapshotMismatch</a></code></li></ul></details></li></ul></details></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main" aria-labelledby="module-chamomile-commands">
+  
+  
+    <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
+      
+      <li>
+        
+        <a href="../Chamomile.html">Chamomile</a><span>::</span>
+        
+      </li>
+      
+      <li>
+        
+        <span>Commands</span>
+        
+      </li>
+      
+    </ol>
+  
+
+  <span id="module-Chamomile::Commands" class="legacy-anchor"></span>
+  <h1 id="module-chamomile-commands" class="anchor-link module">
+    module Chamomile::Commands
+  </h1>
+
+  <section class="description">
+    
+<p>Helper methods for creating command lambdas (quit, batch, tick, etc.).</p>
+
+  </section>
+
+
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
+
+
+
+
+
+
+
+
+
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
+       </header>
+
+
+      <div id="method-c-batch" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-batch" title="Link to this method">
+                <span class="method-name">batch</span>
+                <span class="method-args">(*cmds)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="batch-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">batch</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">cmds</span>)
+  <span class="ruby-identifier">valid</span> = <span class="ruby-identifier">cmds</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">valid</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-identifier">valid</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-cancel" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-cancel" title="Link to this method">
+                <span class="method-name">cancel</span>
+                <span class="method-args">(token)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="cancel-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cancel</span>(<span class="ruby-identifier">token</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">CancelCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">token:</span> <span class="ruby-identifier">token</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Returns a command that cancels a running token.</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-cancellable" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-cancellable" title="Link to this method">
+                <span class="method-name">cancellable</span>
+                <span class="method-args">(&amp;block)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="cancellable-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cancellable</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">token</span> = <span class="ruby-constant">CancelToken</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">wrapped</span> = <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">cancelled?</span>
+
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">token</span>)
+  }
+  [<span class="ruby-identifier">token</span>, <span class="ruby-identifier">wrapped</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Creates a cancel token and returns [token, command_wrapper]. The block receives the token for cooperative cancellation checking.</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-clear_screen" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-clear_screen" title="Link to this method">
+                <span class="method-name">clear_screen</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="clear_screen-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 230</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear_screen</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">ClearScreenMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-cmd" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-cmd" title="Link to this method">
+                <span class="method-name">cmd</span>
+                <span class="method-args">(callable)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="cmd-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cmd</span>(<span class="ruby-identifier">callable</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-identifier">callable</span>.<span class="ruby-identifier">call</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-cursor_position" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-cursor_position" title="Link to this method">
+                <span class="method-name">cursor_position</span>
+                <span class="method-args">(row, col)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="cursor_position-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cursor_position</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">CursorPositionCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">row:</span> <span class="ruby-identifier">row</span>, <span class="ruby-value">col:</span> <span class="ruby-identifier">col</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-cursor_shape" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-cursor_shape" title="Link to this method">
+                <span class="method-name">cursor_shape</span>
+                <span class="method-args">(shape)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="cursor_shape-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cursor_shape</span>(<span class="ruby-identifier">shape</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">CursorShapeCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">shape:</span> <span class="ruby-identifier">shape</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-deliver" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-deliver" title="Link to this method">
+                <span class="method-name">deliver</span>
+                <span class="method-args">(msg)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="deliver-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deliver</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-identifier">msg</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Posts a message directly to the event queue — no thread, no async.</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-disable_bracketed_paste" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-disable_bracketed_paste" title="Link to this method">
+                <span class="method-name">disable_bracketed_paste</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="disable_bracketed_paste-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 218</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disable_bracketed_paste</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">DisableBracketedPasteMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-disable_mouse" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-disable_mouse" title="Link to this method">
+                <span class="method-name">disable_mouse</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="disable_mouse-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disable_mouse</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">DisableMouseMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-disable_report_focus" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-disable_report_focus" title="Link to this method">
+                <span class="method-name">disable_report_focus</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="disable_report_focus-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 226</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disable_report_focus</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">DisableReportFocusMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-enable_bracketed_paste" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-enable_bracketed_paste" title="Link to this method">
+                <span class="method-name">enable_bracketed_paste</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enable_bracketed_paste-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 214</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enable_bracketed_paste</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">EnableBracketedPasteMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-enable_mouse_all_motion" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-enable_mouse_all_motion" title="Link to this method">
+                <span class="method-name">enable_mouse_all_motion</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enable_mouse_all_motion-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 206</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enable_mouse_all_motion</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">EnableMouseAllMotionMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-enable_mouse_cell_motion" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-enable_mouse_cell_motion" title="Link to this method">
+                <span class="method-name">enable_mouse_cell_motion</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enable_mouse_cell_motion-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 202</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enable_mouse_cell_motion</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">EnableMouseCellMotionMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-enable_report_focus" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-enable_report_focus" title="Link to this method">
+                <span class="method-name">enable_report_focus</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enable_report_focus-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enable_report_focus</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">EnableReportFocusMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-enter_alt_screen" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-enter_alt_screen" title="Link to this method">
+                <span class="method-name">enter_alt_screen</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enter_alt_screen-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 194</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enter_alt_screen</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">EnterAltScreenMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Runtime mode toggles — return these as commands from update</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-every" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-every" title="Link to this method">
+                <span class="method-name">every</span>
+                <span class="method-args">(duration, &amp;block)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="every-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">every</span>(<span class="ruby-identifier">duration</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-identifier">now</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-identifier">next_tick</span> = (<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">duration</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">duration</span>)
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">next_tick</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+    <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-constant">TickMsg</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">time:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-exec" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-exec" title="Link to this method">
+                <span class="method-name">exec</span>
+                <span class="method-args">(command, *args, &amp;callback)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="exec-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">exec</span>(<span class="ruby-identifier">command</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">callback</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">ExecCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">command:</span> <span class="ruby-identifier">command</span>, <span class="ruby-value">args:</span> <span class="ruby-identifier">args</span>, <span class="ruby-value">callback:</span> <span class="ruby-identifier">callback</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-exit_alt_screen" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-exit_alt_screen" title="Link to this method">
+                <span class="method-name">exit_alt_screen</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="exit_alt_screen-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 198</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">exit_alt_screen</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">ExitAltScreenMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-hide_cursor" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-hide_cursor" title="Link to this method">
+                <span class="method-name">hide_cursor</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="hide_cursor-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hide_cursor</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">CursorVisibilityCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">visible:</span> <span class="ruby-keyword">false</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-map" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-map" title="Link to this method">
+                <span class="method-name">map</span>
+                <span class="method-args">(cmd, &amp;transform)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="map-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">map</span>(<span class="ruby-identifier">cmd</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">transform</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-identifier">result</span> = <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">call</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">transform</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">result</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Transforms a command’s result before it reaches update.</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-none" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-none" title="Link to this method">
+                <span class="method-name">none</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="none-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">none</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-println" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-println" title="Link to this method">
+                <span class="method-name">println</span>
+                <span class="method-args">(text)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="println-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">println</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">PrintlnCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">text:</span> <span class="ruby-identifier">text</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Print a line above the rendered TUI area</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-quit" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-quit" title="Link to this method">
+                <span class="method-name">quit</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="quit-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">quit</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">QuitMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-request_window_size" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-request_window_size" title="Link to this method">
+                <span class="method-name">request_window_size</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="request_window_size-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">request_window_size</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">RequestWindowSizeMsg</span>.<span class="ruby-identifier">new</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-sequence" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-sequence" title="Link to this method">
+                <span class="method-name">sequence</span>
+                <span class="method-args">(*cmds)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="sequence-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sequence</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">cmds</span>)
+  <span class="ruby-identifier">valid</span> = <span class="ruby-identifier">cmds</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">valid</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-operator">-&gt;</span> { [<span class="ruby-value">:sequence</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">valid</span>] }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-shell" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-shell" title="Link to this method">
+                <span class="method-name">shell</span>
+                <span class="method-args">(command, envelope:, dir: Dir.pwd, env: {})</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="shell-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shell</span>(<span class="ruby-identifier">command</span>, <span class="ruby-value">envelope:</span>, <span class="ruby-value">dir:</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>, <span class="ruby-value">env:</span> {})
+  <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span>, <span class="ruby-identifier">status</span> = <span class="ruby-constant">Open3</span>.<span class="ruby-identifier">capture3</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">command</span>, <span class="ruby-value">chdir:</span> <span class="ruby-identifier">dir</span>)
+    <span class="ruby-constant">ShellResult</span>.<span class="ruby-identifier">new</span>(
+      <span class="ruby-value">envelope:</span> <span class="ruby-identifier">envelope</span>,
+      <span class="ruby-value">stdout:</span> <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>),
+      <span class="ruby-value">stderr:</span> <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>),
+      <span class="ruby-value">status:</span> <span class="ruby-identifier">status</span>.<span class="ruby-identifier">exitstatus</span>,
+      <span class="ruby-value">success:</span> <span class="ruby-identifier">status</span>.<span class="ruby-identifier">success?</span>
+    )
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Run a shell command and return a ShellResult message with the given envelope name.</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-show_cursor" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-show_cursor" title="Link to this method">
+                <span class="method-name">show_cursor</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="show_cursor-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">show_cursor</span>
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">CursorVisibilityCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">visible:</span> <span class="ruby-keyword">true</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-stream" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-stream" title="Link to this method">
+                <span class="method-name">stream</span>
+                <span class="method-args">(&amp;block)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="stream-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stream</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">token</span> = <span class="ruby-constant">CancelToken</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">cmd</span> = <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">token</span>.<span class="ruby-identifier">cancelled?</span>
+
+    <span class="ruby-constant">StreamCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">token:</span> <span class="ruby-identifier">token</span>, <span class="ruby-value">producer:</span> <span class="ruby-identifier">block</span>)
+  }
+  [<span class="ruby-identifier">token</span>, <span class="ruby-identifier">cmd</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>A streaming command that emits multiple messages over time. The block receives a <code>push</code> callable and a <code>token</code> for cancellation. Returns [cancel_token, command].</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-tick" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-tick" title="Link to this method">
+                <span class="method-name">tick</span>
+                <span class="method-args">(duration, &amp;block)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="tick-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tick</span>(<span class="ruby-identifier">duration</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">duration</span>)
+    <span class="ruby-identifier">block</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-constant">TickMsg</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">time:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-timer" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-timer" title="Link to this method">
+                <span class="method-name">timer</span>
+                <span class="method-args">(duration, envelope:)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="timer-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">timer</span>(<span class="ruby-identifier">duration</span>, <span class="ruby-value">envelope:</span>)
+  <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">duration</span>)
+    <span class="ruby-constant">TimerTick</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">envelope:</span> <span class="ruby-identifier">envelope</span>, <span class="ruby-value">time:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Fire a timer message with a typed envelope.</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-window_title" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-window_title" title="Link to this method">
+                <span class="method-name">window_title</span>
+                <span class="method-args">(title)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="window_title-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/commands.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">window_title</span>(<span class="ruby-identifier">title</span>)
+  <span class="ruby-operator">-&gt;</span> { <span class="ruby-constant">WindowTitleCmd</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-identifier">title</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+
