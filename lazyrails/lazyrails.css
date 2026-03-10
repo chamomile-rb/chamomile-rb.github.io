@@ -135,49 +135,77 @@
   font-size: 0.8em;
 }
 
-/* -- Code showcase (single centered block) -- */
-.lr-code-showcase {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.lr-code-showcase .code-block {
-  max-width: none;
-}
-
-/* -- Snippet grids -- */
-.lr-snippets-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.lr-snippets-grid .code-block {
-  max-width: none;
-}
-
-.lr-snippets-grid .code-block pre {
-  font-size: 0.76rem;
-  line-height: 1.55;
-  padding: 14px 16px;
-}
-
-.lr-snippets-two {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+/* -- Feature showcase (gif full-width, text below) -- */
+.lr-feature {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.lr-snippets-two .code-block {
-  max-width: none;
+.lr-feature-gif {
+  margin-bottom: 32px;
 }
 
-.lr-snippets-two .code-block pre {
-  font-size: 0.78rem;
-  line-height: 1.6;
-  padding: 14px 16px;
+.lr-feature-gif img {
+  width: 100%;
+  display: block;
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.lr-feature-text {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.lr-feature-text h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.lr-feature-text p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.lr-feature-text code {
+  white-space: nowrap;
+}
+
+.lr-feature-text .lr-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.lr-key {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--border);
+  color: var(--text);
+}
+
+/* -- Hero gif -- */
+.lr-hero-gif img {
+  width: 100%;
+  display: block;
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 /* -- Gallery -- */
@@ -202,12 +230,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .lr-snippets-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .lr-snippets-two {
-    grid-template-columns: 1fr;
+  .lr-feature {
+    max-width: 100%;
   }
 
   .lr-gallery {

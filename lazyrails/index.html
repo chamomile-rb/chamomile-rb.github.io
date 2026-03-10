@@ -30,7 +30,7 @@
         <span class="hero-flower lr-emoji">&#x1F682;</span>
         <h1 class="hero-title"><span class="lr-title-accent">Lazyrails</span></h1>
         <p class="hero-subtitle">A lazygit-style TUI for Rails developers.</p>
-        <p class="hero-tagline">Routes, migrations, models, tests, server, gems, rake &mdash; all in one split-pane interface. Every command logged so you learn the CLI as you go.</p>
+        <p class="hero-tagline">Routes, migrations, models, tests, server, gems, rake. <br> All in one split-pane interface.</p>
         <div class="hero-actions">
           <a href="https://github.com/chamomile-rb/lazyrails" class="btn btn-primary lr-btn-primary">View on GitHub</a>
           <a href="#features" class="btn btn-secondary">See Features</a>
@@ -39,13 +39,8 @@
           <code>gem install lazyrails-tui</code>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="lr-screenshot-placeholder">
-          <div class="lr-placeholder-inner">
-            <span class="lr-placeholder-icon">&#x1F4F7;</span>
-            <span class="lr-placeholder-text">Lazyrails main interface screenshot</span>
-          </div>
-        </div>
+      <div class="hero-right lr-hero-gif">
+        <img src="/lazyrails/tapes/overview.gif" alt="Lazyrails TUI cycling through panels: Status, Server, Routes, Database, Models">
       </div>
     </div>
   </header>
@@ -120,242 +115,70 @@
     </div>
   </section>
 
-  <!-- Smart Introspection -->
+  <!-- Feature: Routes -->
   <section class="section section-alt">
     <div class="container">
-      <h2>Smart Introspection</h2>
-      <p class="section-intro">One <code>rails runner</code> call replaces 3+ separate CLI commands. Structured JSON, not fragile text parsing.</p>
-
-      <div class="lr-code-showcase">
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">introspect_runner.rb</span>
+      <div class="lr-feature">
+        <div class="lr-feature-gif">
+          <img src="/lazyrails/tapes/routes-filter.gif" alt="Browsing and filtering routes in Lazyrails">
+        </div>
+        <div class="lr-feature-text">
+          <h3>Browse &amp; Filter Routes</h3>
+          <p>See every route in your app with color-coded HTTP verbs. Drill into any route to see its controller, action method, and helpers.</p>
+          <p>Filter instantly with <code>/</code>, group by controller with <code>g</code>, or scroll through the full list with <code>j</code>/<code>k</code>.</p>
+          <div class="lr-keys">
+            <span class="lr-key">/  filter</span>
+            <span class="lr-key">g  group</span>
+            <span class="lr-key">Enter  detail</span>
           </div>
-          <pre><code><span class="comment"># Routes via ActionDispatch::Routing</span>
-data[<span class="sym">:routes</span>] = <span class="type">Rails</span>.application.routes.routes.filter_map <span class="kw">do</span> |route|
-  w = <span class="type">ActionDispatch::Routing::RouteWrapper</span>.new(route)
-  <span class="kw">next if</span> w.internal?
-  { verb: w.verb, path: w.path, action: w.endpoint, name: w.name }
-<span class="kw">end</span>
-
-<span class="comment"># Schema columns directly from the connection</span>
-conn = <span class="type">ActiveRecord::Base</span>.connection
-data[<span class="sym">:tables</span>] = conn.tables.sort.to_h <span class="kw">do</span> |table|
-  cols = conn.columns(table).map <span class="kw">do</span> |c|
-    { name: c.name, type: c.type, null: c.null, default: c.default }
-  <span class="kw">end</span>
-  [table, cols]
-<span class="kw">end</span>
-
-<span class="comment"># Models with associations and validations</span>
-data[<span class="sym">:models</span>] = <span class="type">ActiveRecord::Base</span>.descendants.filter_map <span class="kw">do</span> |model|
-  <span class="kw">next if</span> model.abstract_class? || !model.table_exists?
-  assocs = model.reflect_on_all_associations.map { |a|
-    { macro: a.macro, name: a.name, class_name: a.class_name }
-  }
-  { name: model.name, table: model.table_name, associations: assocs }
-<span class="kw">end</span></code></pre>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Immutable Data Structs -->
+  <!-- Feature: Generators -->
   <section class="section">
     <div class="container">
-      <h2>Clean Data Modeling</h2>
-      <p class="section-intro">Immutable structs with <code>Data.define</code>. Every piece of data has a clear shape.</p>
-
-      <div class="lr-snippets-two">
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">Route</span>
-          </div>
-          <pre><code><span class="type">Route</span> = <span class="type">Data</span>.define(<span class="sym">:verb</span>, <span class="sym">:path</span>, <span class="sym">:action</span>, <span class="sym">:name</span>, <span class="sym">:engine</span>) <span class="kw">do</span>
-  <span class="kw">def</span> <span class="fn">to_s</span>
-    <span class="str">"</span>#{verb.ljust(<span class="num">7</span>)} #{path.ljust(<span class="num">40</span>)} #{action}<span class="str">"</span>
-  <span class="kw">end</span>
-<span class="kw">end</span></code></pre>
+      <div class="lr-feature">
+        <div class="lr-feature-gif">
+          <img src="/lazyrails/tapes/generate-model.gif" alt="Generating a Rails model from inside Lazyrails">
         </div>
-
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">Migration</span>
+        <div class="lr-feature-text">
+          <h3>Run Generators In-Place</h3>
+          <p>Scaffold models, controllers, and migrations without leaving the TUI. Type your field definitions and watch the output stream in real-time.</p>
+          <p>Every generator command is logged with automatic undo support &mdash; <code>rails destroy</code> is one keystroke away.</p>
+          <div class="lr-keys">
+            <span class="lr-key">G  generate</span>
+            <span class="lr-key">x  actions</span>
+            <span class="lr-key">u  undo</span>
           </div>
-          <pre><code><span class="type">Migration</span> = <span class="type">Data</span>.define(
-  <span class="sym">:status</span>, <span class="sym">:version</span>, <span class="sym">:name</span>, <span class="sym">:file_path</span>, <span class="sym">:database</span>
-) <span class="kw">do</span>
-  <span class="kw">def</span> <span class="fn">up?</span> = status == <span class="str">"up"</span>
-  <span class="kw">def</span> <span class="fn">down?</span> = status == <span class="str">"down"</span>
-
-  <span class="kw">def</span> <span class="fn">to_s</span>
-    arrow = up? ? <span class="str">"\u2191"</span> : <span class="str">"\u2193"</span>
-    <span class="str">"</span>#{arrow} #{version}  #{name}<span class="str">"</span>
-  <span class="kw">end</span>
-<span class="kw">end</span></code></pre>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Server Management -->
+  <!-- Feature: Console -->
   <section class="section section-alt">
     <div class="container">
-      <h2>Subprocess Mastery</h2>
-      <p class="section-intro">Sophisticated server lifecycle management. Process groups, Bundler isolation, intelligent state detection.</p>
-
-      <div class="lr-code-showcase">
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">server_manager.rb</span>
-          </div>
-          <pre><code><span class="kw">class</span> <span class="type">ServerManager</span>
-  <span class="type">MAX_LOG_LINES</span> = <span class="num">2000</span>
-  <span class="type">KILL_TIMEOUT</span> = <span class="num">5</span>
-
-  <span class="kw">def</span> <span class="fn">start</span>
-    <span class="ivar">@state</span> = <span class="sym">:starting</span>
-    <span class="ivar">@thread</span> = <span class="type">Thread</span>.new <span class="kw">do</span>
-      env = { <span class="str">"DISABLE_SPRING"</span> =&gt; <span class="str">"1"</span>, <span class="str">"PORT"</span> =&gt; <span class="ivar">@port</span>.to_s }
-      cmd = <span class="ivar">@uses_bin_dev</span> ? <span class="str">"bin/dev"</span> : <span class="str">"</span>#{<span class="ivar">@project</span>.bin_rails}<span class="str"> server"</span>
-
-      <span class="type">Bundler</span>.with_unbundled_env <span class="kw">do</span>
-        <span class="type">Open3</span>.popen2e(env, cmd, chdir: <span class="ivar">@project</span>.dir, pgroup: <span class="kw">true</span>) <span class="kw">do</span> |stdin, out, wait|
-          stdin.close
-          out.each_line <span class="kw">do</span> |line|
-            <span class="ivar">@mutex</span>.synchronize <span class="kw">do</span>
-              <span class="ivar">@log_lines</span> &lt;&lt; line
-              <span class="ivar">@log_lines</span>.shift <span class="kw">if</span> <span class="ivar">@log_lines</span>.size &gt; <span class="type">MAX_LOG_LINES</span>
-              <span class="ivar">@state</span> = <span class="sym">:running</span> <span class="kw">if</span> server_ready?(line)
-            <span class="kw">end</span>
-          <span class="kw">end</span>
-        <span class="kw">end</span>
-      <span class="kw">end</span>
-    <span class="kw">end</span>
-  <span class="kw">end</span>
-
-  <span class="kw">private</span>
-
-  <span class="kw">def</span> <span class="fn">server_ready?</span>(line)
-    line.include?(<span class="str">"Listening on"</span>) ||  <span class="comment"># Puma</span>
-    line.include?(<span class="str">"listening on"</span>) ||  <span class="comment"># Falcon, Vite</span>
-    line.include?(<span class="str">"Ctrl-C to stop"</span>)   <span class="comment"># WEBrick, Thin</span>
-  <span class="kw">end</span>
-<span class="kw">end</span></code></pre>
+      <div class="lr-feature">
+        <div class="lr-feature-gif">
+          <img src="/lazyrails/tapes/console-eval.gif" alt="Evaluating Ruby expressions in the Lazyrails console">
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Safety -->
-  <section class="section">
-    <div class="container">
-      <h2>Safety Built In</h2>
-      <p class="section-intro">Destructive operations require confirmation proportional to their risk. Every command is logged with undo support.</p>
-
-      <div class="lr-snippets-two">
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">confirmation.rb</span>
+        <div class="lr-feature-text">
+          <h3>Inline Ruby Console</h3>
+          <p>Evaluate any Ruby expression against your running app without dropping to <code>rails console</code>. Check record counts, inspect config, test queries.</p>
+          <p>Results are color-coded &mdash; green for success, red for errors &mdash; and stay in your history so you can scroll back through previous evaluations.</p>
+          <div class="lr-keys">
+            <span class="lr-key">e  evaluate</span>
+            <span class="lr-key">j/k  scroll history</span>
           </div>
-          <pre><code><span class="kw">class</span> <span class="type">Confirmation</span>
-  <span class="comment"># Red: type panel name to confirm</span>
-  <span class="type">RED_PATTERNS</span> = <span class="str">%w[db:drop db:reset db:seed:replant]</span>
-
-  <span class="comment"># Yellow: y/n prompt</span>
-  <span class="type">YELLOW_PATTERNS</span> = <span class="str">%w[db:rollback db:migrate:down destroy]</span>
-
-  <span class="kw">def</span> <span class="kw">self</span>.<span class="fn">detect_tier</span>(cmd)
-    cmd = cmd.join(<span class="str">" "</span>) <span class="kw">if</span> cmd.is_a?(<span class="type">Array</span>)
-    <span class="kw">return</span> <span class="sym">:red</span> <span class="kw">if</span> <span class="type">RED_PATTERNS</span>.any? { |p| cmd.include?(p) }
-    <span class="kw">return</span> <span class="sym">:yellow</span> <span class="kw">if</span> <span class="type">YELLOW_PATTERNS</span>.any? { |p| cmd.include?(p) }
-    <span class="sym">:green</span>
-  <span class="kw">end</span>
-<span class="kw">end</span></code></pre>
-        </div>
-
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">command_log.rb &mdash; undo</span>
-          </div>
-          <pre><code><span class="kw">def</span> <span class="fn">reverse_command</span>(entry)
-  <span class="kw">case</span> entry.command
-  <span class="kw">when</span> <span class="str">/rails generate (.+)/</span>
-    entry.command.sub(<span class="str">"generate"</span>, <span class="str">"destroy"</span>)
-  <span class="kw">when</span> <span class="str">/db:migrate\b(?!:)/</span>
-    <span class="str">"bin/rails db:rollback"</span>
-  <span class="kw">when</span> <span class="str">/db:migrate:up VERSION=(\d+)/</span>
-    version = <span class="type">Regexp</span>.last_match(<span class="num">1</span>)
-    <span class="str">"bin/rails db:migrate:down VERSION=</span>#{version}<span class="str">"</span>
-  <span class="kw">end</span>
-<span class="kw">end</span></code></pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Routes View -->
-  <section class="section section-alt">
-    <div class="container">
-      <h2>Rich Detail Views</h2>
-      <p class="section-intro">Drill into any item for full context. Routes show verb coloring and controller resolution.</p>
-
-      <div class="lr-code-showcase">
-        <div class="code-block">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">views/routes_view.rb</span>
-          </div>
-          <pre><code><span class="type">VERB_COLORS</span> = {
-  <span class="str">"GET"</span>    =&gt; <span class="str">"#04b575"</span>,
-  <span class="str">"POST"</span>   =&gt; <span class="str">"#5b9bd5"</span>,
-  <span class="str">"PUT"</span>    =&gt; <span class="str">"#e5c07b"</span>,
-  <span class="str">"PATCH"</span>  =&gt; <span class="str">"#e5c07b"</span>,
-  <span class="str">"DELETE"</span> =&gt; <span class="str">"#ff6347"</span>,
-}
-
-<span class="kw">def</span> <span class="kw">self</span>.<span class="fn">render_detail</span>(route, project_dir, width:)
-  lines = [<span class="str">"</span>#{route.verb} #{route.path}<span class="str">"</span>]
-  lines &lt;&lt; (<span class="str">"="</span> * [width - <span class="num">4</span>, <span class="num">40</span>].min)
-  lines &lt;&lt; <span class="str">"Action:     </span>#{route.action}<span class="str">"</span>
-
-  <span class="kw">if</span> route.action.include?(<span class="str">"#"</span>)
-    controller, action = route.action.split(<span class="str">"#"</span>, <span class="num">2</span>)
-    path = <span class="str">"app/controllers/</span>#{controller}<span class="str">_controller.rb"</span>
-    content = safe_read(<span class="type">File</span>.join(project_dir, path))
-    <span class="kw">if</span> content&amp;.include?(<span class="str">"def </span>#{action}<span class="str">"</span>)
-      lines &lt;&lt; <span class="str">"Method:     def </span>#{action}<span class="str"> \u2713"</span>
-    <span class="kw">end</span>
-  <span class="kw">end</span>
-  lines.join(<span class="str">"\n"</span>)
-<span class="kw">end</span></code></pre>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Built With -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       <h2>Built With the Chamomile Ecosystem</h2>
       <p class="section-intro">Lazyrails is the flagship application for Chamomile, Petals, and Flourish.</p>
