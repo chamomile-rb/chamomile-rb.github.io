@@ -529,10 +529,10 @@
     <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">tick_cmd</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">on_key</span>(<span class="ruby-string">&quot;q&quot;</span>) { <span class="ruby-identifier">quit</span> }
-
   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyEvent</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">quit</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;q&quot;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">SpinnerTickMsg</span>
       <span class="ruby-keyword">return</span> <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
     <span class="ruby-keyword">end</span>
@@ -647,7 +647,7 @@
 <span class="ruby-comment"># Navigate</span>
 <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">next_page</span>
 <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">prev_page</span>
-<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">key_msg</span>)  <span class="ruby-comment"># responds to arrows, h/l, page up/down</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)  <span class="ruby-comment"># responds to arrows, h/l, page up/down</span>
 
 <span class="ruby-comment"># Display</span>
 <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;○ ● ○ ○ ○&quot; (dot mode)</span>
