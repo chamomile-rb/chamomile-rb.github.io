@@ -468,6 +468,8 @@
       </summary>
       <ul class="nav-list" role="directory">
 
+        <li ><a href="#method-i-handle">handle</a></li>
+
         <li ><a href="#method-i-next_page">next_page</a></li>
 
         <li ><a href="#method-i-on_first_page-3F">on_first_page?</a></li>
@@ -507,7 +509,7 @@
       </span>
     </summary>
 
-    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="../Petals/Table.html">Table</a></code></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><details><summary><code><a href="../Petals/Table.html">Table</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/Table/ColumnBuilder.html">ColumnBuilder</a></code></li></ul></details></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
   </details>
 </div>
 
@@ -778,6 +780,61 @@
        <header>
          <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
        </header>
+
+
+      <div id="method-i-handle" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-handle" title="Link to this method">
+                <span class="method-name">handle</span>
+                <span class="method-args">(msg)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="handle-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/paginator.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyEvent</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">KeyBinding</span>.<span class="ruby-identifier">key_matches?</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-ivar">@key_map</span>, <span class="ruby-value">:prev_page</span>)
+      <span class="ruby-identifier">prev_page</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-constant">KeyBinding</span>.<span class="ruby-identifier">key_matches?</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-ivar">@key_map</span>, <span class="ruby-value">:next_page</span>)
+      <span class="ruby-identifier">next_page</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Elm protocol</p>
+
+
+        </div>
+
+
+
+        <div class="aliases">
+          Also aliased as: <a href="Paginator.html#method-i-update">update</a>
+        </div>
+
+
+
+      </div>
 
 
       <div id="method-i-next_page" class="method-detail anchor-link ">
@@ -1169,7 +1226,7 @@
       </div>
 
 
-      <div id="method-i-update" class="method-detail anchor-link ">
+      <div id="method-i-update" class="method-detail anchor-link method-alias">
         <div class="method-header">
 
             <div class="method-heading">
@@ -1182,33 +1239,12 @@
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
-          <div class="method-source-code" id="update-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/paginator.rb, line 75</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyMsg</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-constant">KeyBinding</span>.<span class="ruby-identifier">key_matches?</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-ivar">@key_map</span>, <span class="ruby-value">:prev_page</span>)
-      <span class="ruby-identifier">prev_page</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-constant">KeyBinding</span>.<span class="ruby-identifier">key_matches?</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-ivar">@key_map</span>, <span class="ruby-value">:next_page</span>)
-      <span class="ruby-identifier">next_page</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
         <div class="method-description">
 
 
-          <p>Elm protocol</p>
+          
 
 
         </div>
@@ -1216,6 +1252,10 @@
 
 
 
+
+        <div class="aliases">
+          Alias for: <a href="Paginator.html#method-i-handle">handle</a>
+        </div>
 
       </div>
 
@@ -1239,7 +1279,7 @@
             </details>
           </div>
           <div class="method-source-code" id="view-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/paginator.rb, line 88</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/paginator.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">view</span>
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@type</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">TYPE_ARABIC</span>

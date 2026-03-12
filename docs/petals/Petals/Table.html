@@ -480,6 +480,8 @@
 
         <li ><a href="#method-i-goto_top">goto_top</a></li>
 
+        <li ><a href="#method-i-handle">handle</a></li>
+
         <li ><a href="#method-i-move_down">move_down</a></li>
 
         <li ><a href="#method-i-move_up">move_up</a></li>
@@ -509,7 +511,7 @@
       </span>
     </summary>
 
-    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="../Petals/Table.html">Table</a></code></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><details><summary><code><a href="../Petals/Table.html">Table</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/Table/ColumnBuilder.html">ColumnBuilder</a></code></li></ul></details></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
   </details>
 </div>
 
@@ -686,7 +688,7 @@
             <div class="method-heading">
               <a href="#method-c-new" title="Link to this method">
                 <span class="method-name">new</span>
-                <span class="method-args">(columns: [], rows: [], height: 10, key_map: DEFAULT_KEY_MAP)</span>
+                <span class="method-args">(columns: [], rows: [], height: 10, key_map: DEFAULT_KEY_MAP, &amp;block)</span>
               </a>
             </div>
 
@@ -699,15 +701,21 @@
             </details>
           </div>
           <div class="method-source-code" id="new-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">columns:</span> [], <span class="ruby-value">rows:</span> [], <span class="ruby-value">height:</span> <span class="ruby-value">10</span>, <span class="ruby-value">key_map:</span> <span class="ruby-constant">DEFAULT_KEY_MAP</span>)
-  <span class="ruby-ivar">@columns</span> = <span class="ruby-identifier">columns</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">columns:</span> [], <span class="ruby-value">rows:</span> [], <span class="ruby-value">height:</span> <span class="ruby-value">10</span>, <span class="ruby-value">key_map:</span> <span class="ruby-constant">DEFAULT_KEY_MAP</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@columns</span> = <span class="ruby-identifier">normalize_columns</span>(<span class="ruby-identifier">columns</span>)
   <span class="ruby-ivar">@rows</span> = <span class="ruby-identifier">rows</span>
   <span class="ruby-ivar">@height</span> = <span class="ruby-identifier">height</span>
   <span class="ruby-ivar">@key_map</span> = <span class="ruby-identifier">key_map</span>
   <span class="ruby-ivar">@cursor</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@offset</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@focused</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">builder</span> = <span class="ruby-constant">ColumnBuilder</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">builder</span>)
+    <span class="ruby-ivar">@columns</span> = <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">columns</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">columns</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -716,7 +724,20 @@
         <div class="method-description">
 
 
-          
+          <p>Accepts columns as keyword arg or via block DSL.</p>
+
+<pre class="ruby"><span class="ruby-comment"># Keyword form (original)</span>
+<span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">columns:</span> [<span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span>)], <span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>)
+
+<span class="ruby-comment"># Block DSL form (new)</span>
+<span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">column</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">column</span> <span class="ruby-string">&quot;Size&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">10</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># Hash form (new)</span>
+<span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">columns:</span> [{ <span class="ruby-value">title:</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span> }], <span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>)
+</pre>
 
 
         </div>
@@ -761,7 +782,7 @@
             </details>
           </div>
           <div class="method-source-code" id="blur-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 63</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">blur</span>
   <span class="ruby-ivar">@focused</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">self</span>
@@ -804,7 +825,7 @@
             </details>
           </div>
           <div class="method-source-code" id="cursor-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 53</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cursor=</span>(<span class="ruby-identifier">n</span>)
   <span class="ruby-ivar">@cursor</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">row_count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>)
   <span class="ruby-identifier">clamp_offset</span>
@@ -847,7 +868,7 @@
             </details>
           </div>
           <div class="method-source-code" id="focus-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 58</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">focus</span>
   <span class="ruby-ivar">@focused</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">self</span>
@@ -890,7 +911,7 @@
             </details>
           </div>
           <div class="method-source-code" id="focused-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 68</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">focused?</span>
   <span class="ruby-ivar">@focused</span>
 <span class="ruby-keyword">end</span></pre>
@@ -932,7 +953,7 @@
             </details>
           </div>
           <div class="method-source-code" id="goto_bottom-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 48</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">goto_bottom</span>
   <span class="ruby-ivar">@cursor</span> = [<span class="ruby-identifier">row_count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>
   <span class="ruby-identifier">clamp_offset</span>
@@ -975,7 +996,7 @@
             </details>
           </div>
           <div class="method-source-code" id="goto_top-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 43</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">goto_top</span>
   <span class="ruby-ivar">@cursor</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">clamp_offset</span>
@@ -993,6 +1014,59 @@
         </div>
 
 
+
+
+
+      </div>
+
+
+      <div id="method-i-handle" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-handle" title="Link to this method">
+                <span class="method-name">handle</span>
+                <span class="method-args">(msg)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="handle-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@focused</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyEvent</span>
+    <span class="ruby-identifier">handle_key</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Handle an incoming event.</p>
+
+
+        </div>
+
+
+
+        <div class="aliases">
+          Also aliased as: <a href="Table.html#method-i-update">update</a>
+        </div>
 
 
 
@@ -1018,7 +1092,7 @@
             </details>
           </div>
           <div class="method-source-code" id="move_down-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 38</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_down</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
   <span class="ruby-ivar">@cursor</span> = (<span class="ruby-ivar">@cursor</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span>).<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">row_count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>)
   <span class="ruby-identifier">clamp_offset</span>
@@ -1061,7 +1135,7 @@
             </details>
           </div>
           <div class="method-source-code" id="move_up-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 33</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_up</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
   <span class="ruby-ivar">@cursor</span> = (<span class="ruby-ivar">@cursor</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">n</span>).<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">row_count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>)
   <span class="ruby-identifier">clamp_offset</span>
@@ -1104,7 +1178,7 @@
             </details>
           </div>
           <div class="method-source-code" id="rows-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 21</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rows=</span>(<span class="ruby-identifier">rows</span>)
   <span class="ruby-ivar">@rows</span> = <span class="ruby-identifier">rows</span>
   <span class="ruby-ivar">@cursor</span> = <span class="ruby-ivar">@cursor</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">row_count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>)
@@ -1148,7 +1222,7 @@
             </details>
           </div>
           <div class="method-source-code" id="selected_row-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 27</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">selected_row</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">empty?</span>
 
@@ -1173,7 +1247,7 @@
       </div>
 
 
-      <div id="method-i-update" class="method-detail anchor-link ">
+      <div id="method-i-update" class="method-detail anchor-link method-alias">
         <div class="method-header">
 
             <div class="method-heading">
@@ -1186,31 +1260,12 @@
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
-          <div class="method-source-code" id="update-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 72</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@focused</span>
-
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyMsg</span>
-    <span class="ruby-identifier">handle_key</span>(<span class="ruby-identifier">msg</span>)
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
         <div class="method-description">
 
 
-          
+          <p>Backward compat alias</p>
 
 
         </div>
@@ -1218,6 +1273,10 @@
 
 
 
+
+        <div class="aliases">
+          Alias for: <a href="Table.html#method-i-handle">handle</a>
+        </div>
 
       </div>
 
@@ -1241,7 +1300,7 @@
             </details>
           </div>
           <div class="method-source-code" id="view-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 83</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/table.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">view</span>
   <span class="ruby-identifier">header</span> = <span class="ruby-identifier">render_header</span>
   <span class="ruby-identifier">separator</span> = <span class="ruby-identifier">render_separator</span>

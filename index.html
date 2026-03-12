@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chamomile — Ruby TUI Framework</title>
-  <meta name="description" content="Build rich, interactive terminal applications in Ruby using the Elm Architecture. Chamomile is a reactive TUI framework with composable components and terminal styling.">
+  <meta name="description" content="Build rich, interactive terminal applications in pure Ruby. Chamomile is a reactive TUI framework with declarative callbacks, composable components, and terminal styling.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
         <span class="hero-flower">&#x1F33C;</span>
         <h1 class="hero-title"><span class="hero-title-accent">Chamomile</span></h1>
         <p class="hero-subtitle">Build terminal apps in pure ruby.</p>
-        <p class="hero-tagline">Inspired by <a href="https://github.com/charmbracelet/bubbletea">Bubbletea</a>. Using <a href="https://github.com/chamomile-rb/petals">Petals</a> and <a href="https://github.com/chamomile-rb/flourish">Flourish</a>.<br>Powers the <a href="/lazyrails">Lazyrails TUI</a>.</p>
+        <p class="hero-tagline">A pure Ruby TUI framework. Using <a href="https://github.com/chamomile-rb/petals">Petals</a> and <a href="https://github.com/chamomile-rb/flourish">Flourish</a>.<br>Powers the <a href="/lazyrails">Lazyrails TUI</a>.</p>
         <div class="hero-actions">
           <a href="https://github.com/chamomile-rb/chamomile" class="btn btn-primary">View on GitHub</a>
           <a href="#ecosystem" class="btn btn-secondary">Explore Ecosystem</a>
@@ -46,16 +46,10 @@
           <pre><code><span class="kw">require</span> <span class="str">"chamomile"</span>
 
 <span class="kw">class</span> <span class="type">Hello</span>
-  <span class="kw">include</span> <span class="type">Chamomile::Model</span>
-  <span class="kw">include</span> <span class="type">Chamomile::Commands</span>
+  <span class="kw">include</span> <span class="type">Chamomile::Application</span>
 
-  <span class="kw">def</span> <span class="fn">update</span>(msg)
-    <span class="kw">case</span> msg
-    <span class="kw">when</span> <span class="type">Chamomile::KeyMsg</span>
-      <span class="kw">return</span> quit <span class="kw">if</span> msg.key == <span class="str">"q"</span>
-    <span class="kw">end</span>
-    <span class="kw">nil</span>
-  <span class="kw">end</span>
+  on_key(<span class="str">"q"</span>)    { quit }
+  on_key(<span class="sym">:ctrl_c</span>) { quit }
 
   <span class="kw">def</span> <span class="fn">view</span>
     <span class="str">"Hello from Chamomile!\n\nPress q to quit."</span>
@@ -72,17 +66,17 @@
   <section id="how-it-works" class="section">
     <div class="container">
       <h2>How It Works</h2>
-      <p class="section-intro">The Elm Architecture, adapted for Ruby.</p>
+      <p class="section-intro">Event-driven architecture, the Ruby way.</p>
       <div class="arch-grid">
         <div class="arch-step">
           <div class="arch-num">1</div>
-          <h3>Model</h3>
-          <p>Your class holds state. Include <code>Chamomile::Model</code> and define <code>update</code> and <code>view</code>.</p>
+          <h3>Application</h3>
+          <p>Your class is the app. Include <code>Chamomile::Application</code> and define <code>view</code>.</p>
         </div>
         <div class="arch-step">
           <div class="arch-num">2</div>
-          <h3>Update</h3>
-          <p>Receives messages &mdash; key presses, mouse events, ticks. Returns a command or nil.</p>
+          <h3>Events</h3>
+          <p>Declare callbacks with <code>on_key</code>, <code>on_mouse</code>, <code>on_tick</code>, <code>on_resize</code>. Or override <code>update</code> for full control.</p>
         </div>
         <div class="arch-step">
           <div class="arch-num">3</div>
@@ -92,7 +86,7 @@
         <div class="arch-step">
           <div class="arch-num">4</div>
           <h3>Commands</h3>
-          <p>Lambdas on a thread pool. They return messages that feed back into update.</p>
+          <p>Lambdas on a thread pool. They return events that feed back into your callbacks.</p>
         </div>
       </div>
     </div>
@@ -112,17 +106,14 @@
             <span class="code-dot green"></span>
             <span class="code-filename">timers &amp; ticks</span>
           </div>
-          <pre><code><span class="kw">def</span> <span class="fn">start</span>
-  tick(<span class="num">1.0</span>)  <span class="comment"># fire a TickMsg after 1s</span>
+          <pre><code><span class="kw">def</span> <span class="fn">on_start</span>
+  tick(<span class="num">1.0</span>)  <span class="comment"># fire a TickEvent after 1s</span>
 <span class="kw">end</span>
 
-<span class="kw">def</span> <span class="fn">update</span>(msg)
-  <span class="kw">case</span> msg
-  <span class="kw">when</span> <span class="type">Chamomile::TickMsg</span>
-    <span class="ivar">@seconds</span> += <span class="num">1</span>
-    tick(<span class="num">1.0</span>)  <span class="comment"># keep ticking</span>
-  <span class="kw">end</span>
-<span class="kw">end</span></code></pre>
+on_tick {
+  <span class="ivar">@seconds</span> += <span class="num">1</span>
+  tick(<span class="num">1.0</span>)  <span class="comment"># keep ticking</span>
+}</code></pre>
         </div>
 
         <div class="code-block">
@@ -201,9 +192,9 @@ token, cmd = stream { |push, t|
         <a href="https://github.com/chamomile-rb/chamomile" class="gem-card">
           <h3>chamomile</h3>
           <span class="gem-role">Core Framework</span>
-          <p>Elm Architecture event loop with async commands, signal handling, diff rendering, mouse support, and full terminal control.</p>
+          <p>Event-driven runtime with async commands, signal handling, diff rendering, mouse support, and full terminal control.</p>
           <ul class="gem-highlights">
-            <li>Model / Update / View pattern</li>
+            <li>Declarative callbacks or manual update</li>
             <li>Thread pool command execution</li>
             <li>FPS-throttled diff renderer</li>
             <li>Mouse, paste, focus, resize</li>
@@ -215,7 +206,7 @@ token, cmd = stream { |push, t|
         <a href="https://github.com/chamomile-rb/petals" class="gem-card">
           <h3>petals</h3>
           <span class="gem-role">Components</span>
-          <p>13 reusable TUI components that follow the same update/view protocol. Drop in and go &mdash; they handle their own state.</p>
+          <p>13 reusable TUI components that follow the same handle/view protocol. Drop in and go &mdash; they handle their own state.</p>
           <ul class="gem-highlights">
             <li>TextInput &amp; TextArea</li>
             <li>Spinner, Timer, Stopwatch, Progress</li>
@@ -259,7 +250,7 @@ token, cmd = stream { |push, t|
   <section id="components" class="section section-alt">
     <div class="container">
       <h2>Components</h2>
-      <p class="section-intro">13 ready-made components from <a href="https://github.com/chamomile-rb/petals">Petals</a>. Same update/view protocol.</p>
+      <p class="section-intro">13 ready-made components from <a href="https://github.com/chamomile-rb/petals">Petals</a>. Same handle/view protocol.</p>
       <div class="component-grid">
         <div class="component">
           <span class="component-name">TextInput</span>

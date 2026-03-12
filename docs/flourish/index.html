@@ -435,7 +435,7 @@
 <span id="label-Flourish" class="legacy-anchor"></span>
 <h1 id="flourish"><a href="#flourish"><a href="Flourish.html"><code>Flourish</code></a></a></h1>
 
-<p>Terminal styling library for Ruby. CSS-like box model with colors, borders, padding, alignment, and layout composition. Inspired by Go’s <a href="https://github.com/charmbracelet/lipgloss">Lip Gloss</a>.</p>
+<p>Terminal styling library for Ruby. CSS-like box model with colors, borders, padding, alignment, and layout composition.</p>
 
 <p>Part of the <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a> ecosystem. Zero runtime dependencies.</p>
 
@@ -529,23 +529,26 @@
 <span id="label-Alignment" class="legacy-anchor"></span>
 <h3 id="alignment"><a href="#alignment">Alignment</a></h3>
 
-<pre class="ruby"><span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">width</span>(<span class="ruby-value">40</span>).<span class="ruby-identifier">align_horizontal</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;centered&quot;</span>)
-<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">height</span>(<span class="ruby-value">10</span>).<span class="ruby-identifier">align_vertical</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;vertically centered&quot;</span>)
+<pre class="ruby"><span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">width</span>(<span class="ruby-value">40</span>).<span class="ruby-identifier">align_horizontal</span>(<span class="ruby-value">:center</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;centered&quot;</span>)
+<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">Style</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">height</span>(<span class="ruby-value">10</span>).<span class="ruby-identifier">align_vertical</span>(<span class="ruby-value">:center</span>).<span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;vertically centered&quot;</span>)
 
-<span class="ruby-comment"># Position constants: LEFT/TOP = 0.0, CENTER = 0.5, RIGHT/BOTTOM = 1.0</span>
+<span class="ruby-comment"># Position symbols: :left/:top, :center, :right/:bottom</span>
 </pre>
 
 <span id="label-Layout+Composition" class="legacy-anchor"></span>
 <h3 id="layout-composition"><a href="#layout-composition">Layout Composition</a></h3>
 
 <pre class="ruby"><span class="ruby-comment"># Side by side</span>
-<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">join_horizontal</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">TOP</span>, <span class="ruby-identifier">box_a</span>, <span class="ruby-identifier">box_b</span>, <span class="ruby-identifier">box_c</span>)
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">horizontal</span>([<span class="ruby-identifier">box_a</span>, <span class="ruby-identifier">box_b</span>, <span class="ruby-identifier">box_c</span>], <span class="ruby-value">align:</span> <span class="ruby-value">:top</span>)
 
 <span class="ruby-comment"># Stacked</span>
-<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">join_vertical</span>(<span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">LEFT</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">footer</span>)
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">vertical</span>([<span class="ruby-identifier">header</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">footer</span>], <span class="ruby-value">align:</span> <span class="ruby-value">:left</span>)
+
+<span class="ruby-comment"># Block form</span>
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">horizontal</span>(<span class="ruby-value">align:</span> <span class="ruby-value">:top</span>) { [<span class="ruby-identifier">box_a</span>, <span class="ruby-identifier">box_b</span>, <span class="ruby-identifier">box_c</span>] }
 
 <span class="ruby-comment"># Place content in a fixed-size box</span>
-<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">place</span>(<span class="ruby-value">80</span>, <span class="ruby-value">24</span>, <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>, <span class="ruby-constant">Flourish</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>, <span class="ruby-identifier">content</span>)
+<span class="ruby-constant">Flourish</span>.<span class="ruby-identifier">place</span>(<span class="ruby-identifier">content</span>, <span class="ruby-value">width:</span> <span class="ruby-value">80</span>, <span class="ruby-value">height:</span> <span class="ruby-value">24</span>, <span class="ruby-value">align:</span> <span class="ruby-value">:center</span>, <span class="ruby-value">valign:</span> <span class="ruby-value">:center</span>)
 </pre>
 
 <span id="label-Style+Inheritance+-26+Copy" class="legacy-anchor"></span>
@@ -576,24 +579,8 @@
 
 <pre class="sh">ruby examples/kitchen_sink.rb            # comprehensive feature showcase (21 features)
 ruby examples/layout_demo.rb             # styled box composition
-ruby examples/layout_demo_interactive.rb # lazygit-style multi-panel UI (requires chamomile + petals)
+ruby examples/layout_demo_interactive.rb # multi-panel UI (requires chamomile + petals)
 ruby examples/smoke_test.rb              # headless test of all features</pre>
-
-<span id="label-Interactive+Layout+Demo" class="legacy-anchor"></span>
-<h3 id="interactive-layout-demo"><a href="#interactive-layout-demo">Interactive Layout Demo</a></h3>
-
-<p>The <code>layout_demo_interactive.rb</code> example combines all three gems to create a Lazygit-style multi-panel interface:</p>
-<ul><li>
-<p>5 stacked left panels + 1 large detail panel</p>
-</li><li>
-<p>Tab/Shift+Tab to cycle focus between panels</p>
-</li><li>
-<p>j/k to scroll within panels</p>
-</li><li>
-<p>Context-sensitive detail pane with fake diffs</p>
-</li><li>
-<p>Terminal resize support</p>
-</li></ul>
 
 <span id="label-Ecosystem" class="legacy-anchor"></span>
 <h2 id="ecosystem"><a href="#ecosystem">Ecosystem</a></h2>
@@ -608,7 +595,7 @@ ruby examples/smoke_test.rb              # headless test of all features</pre>
 <tbody>
 <tr>
 <td><strong><a href="https://github.com/chamomile-rb/chamomile">chamomile</a></strong></td>
-<td>Core TUI framework (Elm Architecture event loop)</td>
+<td>Core TUI framework (event-driven event loop)</td>
 </tr>
 <tr>
 <td><strong><a href="https://github.com/chamomile-rb/petals">petals</a></strong></td>

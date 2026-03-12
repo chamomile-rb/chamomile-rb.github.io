@@ -474,6 +474,8 @@
 
         <li ><a href="#method-i-content">content</a></li>
 
+        <li ><a href="#method-i-content-3D">content=</a></li>
+
         <li ><a href="#method-i-ensure_visible">ensure_visible</a></li>
 
         <li ><a href="#method-i-goto_bottom">goto_bottom</a></li>
@@ -483,6 +485,10 @@
         <li ><a href="#method-i-half_page_down">half_page_down</a></li>
 
         <li ><a href="#method-i-half_page_up">half_page_up</a></li>
+
+        <li ><a href="#method-i-handle">handle</a></li>
+
+        <li ><a href="#method-i-height-3D">height=</a></li>
 
         <li ><a href="#method-i-max_horizontal_scroll">max_horizontal_scroll</a></li>
 
@@ -514,6 +520,8 @@
 
         <li ><a href="#method-i-visible_line_count">visible_line_count</a></li>
 
+        <li ><a href="#method-i-width-3D">width=</a></li>
+
         <li ><a href="#method-i-x_offset-3D">x_offset=</a></li>
 
         <li ><a href="#method-i-y_offset-3D">y_offset=</a></li>
@@ -535,7 +543,7 @@
       </span>
     </summary>
 
-    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="../Petals/Table.html">Table</a></code></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><details><summary><code><a href="../Petals/Table.html">Table</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/Table/ColumnBuilder.html">ColumnBuilder</a></code></li></ul></details></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
   </details>
 </div>
 
@@ -829,7 +837,7 @@
             </details>
           </div>
           <div class="method-source-code" id="at_bottom-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 122</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">at_bottom?</span>
   <span class="ruby-ivar">@y_offset</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">max_scroll</span>
 <span class="ruby-keyword">end</span></pre>
@@ -871,7 +879,7 @@
             </details>
           </div>
           <div class="method-source-code" id="at_top-3F-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 118</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">at_top?</span>
   <span class="ruby-ivar">@y_offset</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -913,9 +921,54 @@
             </details>
           </div>
           <div class="method-source-code" id="content-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 39</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">content</span>
   <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-content-3D" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-content-3D" title="Link to this method">
+                <span class="method-name">content=</span>
+                <span class="method-args">(s)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="content-3D-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">content=</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-ivar">@lines</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-value">-1</span>)
+  <span class="ruby-identifier">clamp_offset</span>
+  <span class="ruby-ivar">@x_offset</span> = <span class="ruby-ivar">@x_offset</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">max_horizontal_scroll</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@soft_wrap</span>
+  <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
 
@@ -955,7 +1008,7 @@
             </details>
           </div>
           <div class="method-source-code" id="ensure_visible-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 132</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ensure_visible</span>(<span class="ruby-identifier">line</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@y_offset</span>
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">y_offset</span> = <span class="ruby-identifier">line</span>
@@ -1002,7 +1055,7 @@
             </details>
           </div>
           <div class="method-source-code" id="goto_bottom-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 81</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">goto_bottom</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">y_offset</span> = <span class="ruby-identifier">max_scroll</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1044,7 +1097,7 @@
             </details>
           </div>
           <div class="method-source-code" id="goto_top-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 77</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">goto_top</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">y_offset</span> = <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1086,7 +1139,7 @@
             </details>
           </div>
           <div class="method-source-code" id="half_page_down-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 73</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">half_page_down</span>
   <span class="ruby-identifier">scroll_down</span>(<span class="ruby-ivar">@height</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1128,7 +1181,7 @@
             </details>
           </div>
           <div class="method-source-code" id="half_page_up-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 69</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">half_page_up</span>
   <span class="ruby-identifier">scroll_up</span>(<span class="ruby-ivar">@height</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1145,6 +1198,106 @@
         </div>
 
 
+
+
+
+      </div>
+
+
+      <div id="method-i-handle" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-handle" title="Link to this method">
+                <span class="method-name">handle</span>
+                <span class="method-args">(msg)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="handle-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyEvent</span>
+    <span class="ruby-identifier">handle_key</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">MouseEvent</span>
+    <span class="ruby-identifier">handle_mouse</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Handle an incoming event.</p>
+
+
+        </div>
+
+
+
+        <div class="aliases">
+          Also aliased as: <a href="Viewport.html#method-i-update">update</a>
+        </div>
+
+
+
+      </div>
+
+
+      <div id="method-i-height-3D" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-height-3D" title="Link to this method">
+                <span class="method-name">height=</span>
+                <span class="method-args">(new_height)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="height-3D-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">height=</span>(<span class="ruby-identifier">new_height</span>)
+  <span class="ruby-ivar">@height</span> = <span class="ruby-identifier">new_height</span>
+  <span class="ruby-identifier">clamp_offset</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+        <div class="aliases">
+          Also aliased as: <a href="Viewport.html#method-i-set_height">set_height</a>
+        </div>
 
 
 
@@ -1170,7 +1323,7 @@
             </details>
           </div>
           <div class="method-source-code" id="max_horizontal_scroll-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 109</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">max_horizontal_scroll</span>
   <span class="ruby-keyword">return</span> <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>
 
@@ -1215,7 +1368,7 @@
             </details>
           </div>
           <div class="method-source-code" id="page_down-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 65</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">page_down</span>
   <span class="ruby-identifier">scroll_down</span>(<span class="ruby-ivar">@height</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1257,7 +1410,7 @@
             </details>
           </div>
           <div class="method-source-code" id="page_up-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 61</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">page_up</span>
   <span class="ruby-identifier">scroll_up</span>(<span class="ruby-ivar">@height</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1299,7 +1452,7 @@
             </details>
           </div>
           <div class="method-source-code" id="scroll_down-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 57</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_down</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">y_offset</span> = <span class="ruby-ivar">@y_offset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1341,7 +1494,7 @@
             </details>
           </div>
           <div class="method-source-code" id="scroll_left-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 91</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_left</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@soft_wrap</span>
 
@@ -1385,7 +1538,7 @@
             </details>
           </div>
           <div class="method-source-code" id="scroll_percent-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 126</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_percent</span>
   <span class="ruby-keyword">return</span> <span class="ruby-value">1.0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">max_scroll</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
 
@@ -1429,7 +1582,7 @@
             </details>
           </div>
           <div class="method-source-code" id="scroll_right-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 97</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_right</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@soft_wrap</span>
 
@@ -1473,7 +1626,7 @@
             </details>
           </div>
           <div class="method-source-code" id="scroll_up-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 53</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_up</span>(<span class="ruby-identifier">n</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">y_offset</span> = <span class="ruby-ivar">@y_offset</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">n</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1515,11 +1668,9 @@
             </details>
           </div>
           <div class="method-source-code" id="set_content-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 32</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_content</span>(<span class="ruby-identifier">s</span>)
-  <span class="ruby-ivar">@lines</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-value">-1</span>)
-  <span class="ruby-identifier">clamp_offset</span>
-  <span class="ruby-ivar">@x_offset</span> = <span class="ruby-ivar">@x_offset</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">max_horizontal_scroll</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@soft_wrap</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">content</span> = <span class="ruby-identifier">s</span>
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1529,7 +1680,7 @@
         <div class="method-description">
 
 
-          
+          <p>Backward compat — preserves the return-self convention</p>
 
 
         </div>
@@ -1541,7 +1692,7 @@
       </div>
 
 
-      <div id="method-i-set_height" class="method-detail anchor-link ">
+      <div id="method-i-set_height" class="method-detail anchor-link method-alias">
         <div class="method-header">
 
             <div class="method-heading">
@@ -1554,25 +1705,12 @@
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
-          <div class="method-source-code" id="set_height-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_height</span>(<span class="ruby-identifier">new_height</span>)
-  <span class="ruby-ivar">@height</span> = <span class="ruby-identifier">new_height</span>
-  <span class="ruby-identifier">clamp_offset</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
         <div class="method-description">
 
 
-          
+          <p>Backward compat alias</p>
 
 
         </div>
@@ -1581,10 +1719,14 @@
 
 
 
+        <div class="aliases">
+          Alias for: <a href="Viewport.html#method-i-height-3D">height=</a>
+        </div>
+
       </div>
 
 
-      <div id="method-i-set_width" class="method-detail anchor-link ">
+      <div id="method-i-set_width" class="method-detail anchor-link method-alias">
         <div class="method-header">
 
             <div class="method-heading">
@@ -1597,26 +1739,12 @@
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
-          <div class="method-source-code" id="set_width-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 21</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_width</span>(<span class="ruby-identifier">new_width</span>)
-  <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">new_width</span>
-  <span class="ruby-identifier">clamp_offset</span>
-  <span class="ruby-ivar">@x_offset</span> = <span class="ruby-ivar">@x_offset</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">max_horizontal_scroll</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@soft_wrap</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
         <div class="method-description">
 
 
-          
+          <p>Backward compat alias</p>
 
 
         </div>
@@ -1624,6 +1752,10 @@
 
 
 
+
+        <div class="aliases">
+          Alias for: <a href="Viewport.html#method-i-width-3D">width=</a>
+        </div>
 
       </div>
 
@@ -1647,7 +1779,7 @@
             </details>
           </div>
           <div class="method-source-code" id="total_line_count-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 43</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_line_count</span>
   <span class="ruby-ivar">@soft_wrap</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">wrapped_lines</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1670,7 +1802,7 @@
       </div>
 
 
-      <div id="method-i-update" class="method-detail anchor-link ">
+      <div id="method-i-update" class="method-detail anchor-link method-alias">
         <div class="method-header">
 
             <div class="method-heading">
@@ -1683,31 +1815,12 @@
         </div>
 
 
-          <div class="method-controls">
-            <details class="method-source-toggle">
-              <summary>Source</summary>
-            </details>
-          </div>
-          <div class="method-source-code" id="update-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 143</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyMsg</span>
-    <span class="ruby-identifier">handle_key</span>(<span class="ruby-identifier">msg</span>)
-  <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">MouseMsg</span>
-    <span class="ruby-identifier">handle_mouse</span>(<span class="ruby-identifier">msg</span>)
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-
 
 
         <div class="method-description">
 
 
-          <p>Elm protocol</p>
+          <p>Backward compat alias</p>
 
 
         </div>
@@ -1715,6 +1828,10 @@
 
 
 
+
+        <div class="aliases">
+          Alias for: <a href="Viewport.html#method-i-handle">handle</a>
+        </div>
 
       </div>
 
@@ -1738,7 +1855,7 @@
             </details>
           </div>
           <div class="method-source-code" id="view-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 154</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">view</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@soft_wrap</span>
     <span class="ruby-identifier">render_soft_wrap</span>
@@ -1784,7 +1901,7 @@
             </details>
           </div>
           <div class="method-source-code" id="visible_line_count-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 47</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">visible_line_count</span>
   [<span class="ruby-identifier">total_line_count</span>, <span class="ruby-ivar">@height</span>].<span class="ruby-identifier">min</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1801,6 +1918,54 @@
         </div>
 
 
+
+
+
+      </div>
+
+
+      <div id="method-i-width-3D" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-width-3D" title="Link to this method">
+                <span class="method-name">width=</span>
+                <span class="method-args">(new_width)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="width-3D-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">width=</span>(<span class="ruby-identifier">new_width</span>)
+  <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">new_width</span>
+  <span class="ruby-identifier">clamp_offset</span>
+  <span class="ruby-ivar">@x_offset</span> = <span class="ruby-ivar">@x_offset</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, [<span class="ruby-identifier">max_horizontal_scroll</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@soft_wrap</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+        <div class="aliases">
+          Also aliased as: <a href="Viewport.html#method-i-set_width">set_width</a>
+        </div>
 
 
 
@@ -1826,7 +1991,7 @@
             </details>
           </div>
           <div class="method-source-code" id="x_offset-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 103</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">x_offset=</span>(<span class="ruby-identifier">n</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@soft_wrap</span>
 
@@ -1870,7 +2035,7 @@
             </details>
           </div>
           <div class="method-source-code" id="y_offset-3D-source">
-            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 85</span>
+            <pre class="ruby"><span class="ruby-comment"># File lib/petals/viewport.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">y_offset=</span>(<span class="ruby-identifier">n</span>)
   <span class="ruby-ivar">@y_offset</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">clamp</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">max_scroll</span>)
 <span class="ruby-keyword">end</span></pre>

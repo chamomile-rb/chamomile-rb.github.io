@@ -15,7 +15,7 @@
 
     <meta
       name="description"
-      content="module Petals::KeyBinding: Utilities for matching KeyMsg against normalized key maps."
+      content="module Petals::KeyBinding: Utilities for matching KeyEvent against normalized key maps."
     >
 
 
@@ -28,7 +28,7 @@
 
 
 
-    <meta property="og:description" content="Utilities for matching KeyMsg against normalized key maps.">
+    <meta property="og:description" content="Utilities for matching KeyEvent against normalized key maps.">
 
 
 
@@ -40,7 +40,7 @@
 
 
 
-    <meta name="twitter:description" content="Utilities for matching KeyMsg against normalized key maps.">
+    <meta name="twitter:description" content="Utilities for matching KeyEvent against normalized key maps.">
 
 
 
@@ -455,7 +455,7 @@
       </span>
     </summary>
 
-    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="../Petals/Table.html">Table</a></code></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="../Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Petals/Cursor.html">Cursor</a></code></li><li><code><a href="../Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Petals/Help.html">Help</a></code></li><li><code><a href="../Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Petals/List.html">List</a></code></li><li><code><a href="../Petals/LogView.html">LogView</a></code></li><li><code><a href="../Petals/Paginator.html">Paginator</a></code></li><li><code><a href="../Petals/Progress.html">Progress</a></code></li><li><code><a href="../Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Petals/Spinner.html">Spinner</a></code></li><li><code><a href="../Petals/Spinners.html">Spinners</a></code></li><li><code><a href="../Petals/Stopwatch.html">Stopwatch</a></code></li><li><details><summary><code><a href="../Petals/Table.html">Table</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Petals/Table/ColumnBuilder.html">ColumnBuilder</a></code></li></ul></details></li><li><code><a href="../Petals/TextArea.html">TextArea</a></code></li><li><code><a href="../Petals/TextInput.html">TextInput</a></code></li><li><code><a href="../Petals/Timer.html">Timer</a></code></li><li><code><a href="../Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
   </details>
 </div>
 
@@ -488,7 +488,7 @@
 
   <section class="description">
     
-<p>Utilities for matching KeyMsg against normalized key maps.</p>
+<p>Utilities for matching KeyEvent against normalized key maps.</p>
 
   </section>
 
@@ -551,7 +551,7 @@
         <div class="method-description">
 
 
-          <p>Check if a KeyMsg matches any binding for a named action. Expects a normalized key map (from .normalize) for best performance.</p>
+          <p>Check if a KeyEvent matches any binding for a named action. Expects a normalized key map (from .normalize) for best performance.</p>
 
 
         </div>

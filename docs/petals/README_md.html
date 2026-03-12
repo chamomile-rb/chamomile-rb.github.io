@@ -419,7 +419,7 @@
       </span>
     </summary>
 
-    <ul class="link-list nav-list"><li><details open><summary><code><a href="./Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="./Petals/Cursor.html">Cursor</a></code></li><li><code><a href="./Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="./Petals/Help.html">Help</a></code></li><li><code><a href="./Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="./Petals/List.html">List</a></code></li><li><code><a href="./Petals/LogView.html">LogView</a></code></li><li><code><a href="./Petals/Paginator.html">Paginator</a></code></li><li><code><a href="./Petals/Progress.html">Progress</a></code></li><li><code><a href="./Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="./Petals/Spinner.html">Spinner</a></code></li><li><code><a href="./Petals/Spinners.html">Spinners</a></code></li><li><code><a href="./Petals/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="./Petals/Table.html">Table</a></code></li><li><code><a href="./Petals/TextArea.html">TextArea</a></code></li><li><code><a href="./Petals/TextInput.html">TextInput</a></code></li><li><code><a href="./Petals/Timer.html">Timer</a></code></li><li><code><a href="./Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
+    <ul class="link-list nav-list"><li><details open><summary><code><a href="./Petals.html">Petals</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Petals/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="./Petals/Cursor.html">Cursor</a></code></li><li><code><a href="./Petals/FilePicker.html">FilePicker</a></code></li><li><code><a href="./Petals/Help.html">Help</a></code></li><li><code><a href="./Petals/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="./Petals/List.html">List</a></code></li><li><code><a href="./Petals/LogView.html">LogView</a></code></li><li><code><a href="./Petals/Paginator.html">Paginator</a></code></li><li><code><a href="./Petals/Progress.html">Progress</a></code></li><li><code><a href="./Petals/RenderCache.html">RenderCache</a></code></li><li><code><a href="./Petals/Spinner.html">Spinner</a></code></li><li><code><a href="./Petals/Spinners.html">Spinners</a></code></li><li><code><a href="./Petals/Stopwatch.html">Stopwatch</a></code></li><li><details><summary><code><a href="./Petals/Table.html">Table</a></code></summary><ul class="link-list nav-list"><li><code><a href="./Petals/Table/ColumnBuilder.html">ColumnBuilder</a></code></li></ul></details></li><li><code><a href="./Petals/TextArea.html">TextArea</a></code></li><li><code><a href="./Petals/TextInput.html">TextInput</a></code></li><li><code><a href="./Petals/Timer.html">Timer</a></code></li><li><code><a href="./Petals/Viewport.html">Viewport</a></code></li></ul></details></li></ul>
   </details>
 </div>
 
@@ -430,7 +430,7 @@
 <span id="label-Petals" class="legacy-anchor"></span>
 <h1 id="petals"><a href="#petals"><a href="Petals.html"><code>Petals</code></a></a></h1>
 
-<p>Reusable TUI components for the <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a> framework. Ported from Go’s <a href="https://github.com/charmbracelet/bubbles">Bubbles</a>.</p>
+<p>Reusable TUI components for the <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a> framework.</p>
 
 <span id="label-Components" class="legacy-anchor"></span>
 <h2 id="components"><a href="#components">Components</a></h2>
@@ -514,23 +514,22 @@
 <pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;petals&quot;</span>
 
 <span class="ruby-keyword">class</span> <span class="ruby-constant">MyApp</span>
-  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span>
-  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>
 
   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     <span class="ruby-ivar">@spinner</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Spinner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">type:</span> <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Spinners</span><span class="ruby-operator">::</span><span class="ruby-constant">DOT</span>)
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">on_start</span>
     <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">tick_cmd</span>
   <span class="ruby-keyword">end</span>
 
+  <span class="ruby-identifier">on_key</span>(<span class="ruby-string">&quot;q&quot;</span>) { <span class="ruby-identifier">quit</span> }
+
   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">msg</span>)
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">msg</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-constant">Chamomile</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyMsg</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">quit</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;q&quot;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">SpinnerTickMsg</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@spinner</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
@@ -552,7 +551,7 @@
 <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">focus</span>
 
 <span class="ruby-comment"># In update:</span>
-<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-ivar">@input</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
 
 <span class="ruby-comment"># In view:</span>
 <span class="ruby-ivar">@input</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;&gt; Hello world&quot; with reverse-video cursor</span>
@@ -566,7 +565,7 @@
 <span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">start_cmd</span>
 
 <span class="ruby-comment"># In update — receives TimerTickMsg, returns TimerTimeoutMsg when done</span>
-<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
 <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">timed_out?</span>  <span class="ruby-comment"># true when countdown reaches 0</span>
 
 <span class="ruby-comment"># Count-up stopwatch</span>
@@ -582,10 +581,14 @@
 <h3 id="viewport"><a href="#viewport">Viewport</a></h3>
 
 <pre class="ruby"><span class="ruby-ivar">@viewport</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Viewport</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">width:</span> <span class="ruby-value">80</span>, <span class="ruby-value">height:</span> <span class="ruby-value">20</span>)
-<span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">set_content</span>(<span class="ruby-identifier">long_text</span>)
+<span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">content</span> = <span class="ruby-identifier">long_text</span>
 
 <span class="ruby-comment"># In update — responds to j/k, pgup/pgdn, g/G, mouse wheel</span>
-<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
+
+<span class="ruby-comment"># Resize</span>
+<span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">width</span>  = <span class="ruby-value">100</span>
+<span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">height</span> = <span class="ruby-value">30</span>
 
 <span class="ruby-comment"># In view:</span>
 <span class="ruby-ivar">@viewport</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># visible portion of content</span>
@@ -594,20 +597,25 @@
 <span id="label-Table" class="legacy-anchor"></span>
 <h3 id="table"><a href="#table">Table</a></h3>
 
-<pre class="ruby"><span class="ruby-identifier">columns</span> = [
-  <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span>),
-  <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Size&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">10</span>),
-]
-<span class="ruby-identifier">rows</span> = [[<span class="ruby-string">&quot;style.rb&quot;</span>, <span class="ruby-string">&quot;19.6 KB&quot;</span>], [<span class="ruby-string">&quot;wrap.rb&quot;</span>, <span class="ruby-string">&quot;4.2 KB&quot;</span>]]
-
-<span class="ruby-ivar">@table</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">columns:</span> <span class="ruby-identifier">columns</span>, <span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>, <span class="ruby-value">height:</span> <span class="ruby-value">10</span>)
+<pre class="ruby"><span class="ruby-comment"># Block DSL form (recommended)</span>
+<span class="ruby-ivar">@table</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">column</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">column</span> <span class="ruby-string">&quot;Size&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">10</span>
+<span class="ruby-keyword">end</span>
 <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">focus</span>
 
 <span class="ruby-comment"># In update — responds to up/down/g/G</span>
-<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
 
 <span class="ruby-comment"># In view:</span>
 <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># formatted table with highlighted cursor row</span>
+
+<span class="ruby-comment"># Keyword form also works</span>
+<span class="ruby-identifier">columns</span> = [
+  <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Name&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">20</span>),
+  <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Size&quot;</span>, <span class="ruby-value">width:</span> <span class="ruby-value">10</span>),
+]
+<span class="ruby-ivar">@table</span> = <span class="ruby-constant">Petals</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">columns:</span> <span class="ruby-identifier">columns</span>, <span class="ruby-value">rows:</span> <span class="ruby-identifier">rows</span>)
 </pre>
 
 <span id="label-List" class="legacy-anchor"></span>
@@ -620,7 +628,7 @@
 <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Fruits&quot;</span>
 
 <span class="ruby-comment"># In update — responds to arrows, /, filter input</span>
-<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-identifier">cmd</span> = <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
 
 <span class="ruby-comment"># In view — rendered list with filter bar, pagination, help</span>
 <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">view</span>
@@ -634,7 +642,7 @@
 <span class="ruby-comment"># Navigate</span>
 <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">next_page</span>
 <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">prev_page</span>
-<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">key_msg</span>)  <span class="ruby-comment"># responds to arrows, h/l, page up/down</span>
+<span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">key_msg</span>)  <span class="ruby-comment"># responds to arrows, h/l, page up/down</span>
 
 <span class="ruby-comment"># Display</span>
 <span class="ruby-ivar">@pager</span>.<span class="ruby-identifier">view</span>  <span class="ruby-comment"># &quot;○ ● ○ ○ ○&quot; (dot mode)</span>
@@ -650,19 +658,19 @@
 <span id="label-Component+Protocol" class="legacy-anchor"></span>
 <h2 id="component-protocol"><a href="#component-protocol">Component Protocol</a></h2>
 
-<p>All components follow the Elm Architecture pattern:</p>
+<p>All components follow the event-driven pattern:</p>
 
 <pre class="ruby"><span class="ruby-comment"># Initialize</span>
 <span class="ruby-identifier">component</span> = <span class="ruby-constant">Component</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span><span class="ruby-operator">...</span>)
 
-<span class="ruby-comment"># Update — returns a command or nil</span>
-<span class="ruby-identifier">cmd</span> = <span class="ruby-identifier">component</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">msg</span>)
+<span class="ruby-comment"># Handle events — returns a command or nil</span>
+<span class="ruby-identifier">cmd</span> = <span class="ruby-identifier">component</span>.<span class="ruby-identifier">handle</span>(<span class="ruby-identifier">msg</span>)
 
 <span class="ruby-comment"># Render — returns a String</span>
 <span class="ruby-identifier">component</span>.<span class="ruby-identifier">view</span>
 </pre>
 
-<p>Components are mutable classes — <code>update</code> modifies internal state and returns a command (or nil), so no model reassignment is needed.</p>
+<p>Components are mutable classes — <code>handle</code> modifies internal state and returns a command (or nil), so no model reassignment is needed.</p>
 
 <span id="label-Key+Binding" class="legacy-anchor"></span>
 <h2 id="key-binding"><a href="#key-binding">Key Binding</a></h2>
@@ -698,7 +706,7 @@ ruby examples/smoke_test.rb            # headless test of all components</pre>
 <tbody>
 <tr>
 <td><strong><a href="https://github.com/chamomile-rb/chamomile">chamomile</a></strong></td>
-<td>Core TUI framework (Elm Architecture event loop)</td>
+<td>Core TUI framework (event-driven event loop)</td>
 </tr>
 <tr>
 <td><strong>petals</strong></td>
