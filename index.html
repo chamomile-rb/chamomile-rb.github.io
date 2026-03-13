@@ -26,7 +26,7 @@
         <span class="hero-flower">&#x1F33C;</span>
         <h1 class="hero-title"><span class="hero-title-accent">Chamomile</span></h1>
         <p class="hero-subtitle">Build terminal apps in pure ruby.</p>
-        <p class="hero-tagline">A pure Ruby TUI framework. Using <a href="https://github.com/chamomile-rb/petals">Petals</a> and <a href="https://github.com/chamomile-rb/flourish">Flourish</a>.<br>Powers the <a href="/lazyrails">Lazyrails TUI</a>.</p>
+        <p class="hero-tagline">A pure Ruby TUI framework. Core runtime, styling, and components &mdash; all in one gem.<br>Powers the <a href="/lazyrails">Lazyrails TUI</a>.</p>
         <div class="hero-actions">
           <a href="https://github.com/chamomile-rb/chamomile" class="btn btn-primary">View on GitHub</a>
           <a href="#ecosystem" class="btn btn-secondary">Explore Ecosystem</a>
@@ -44,7 +44,6 @@
             <span class="code-filename">counter.rb</span>
           </div>
           <pre><code><span class="kw">require</span> <span class="str">"chamomile"</span>
-<span class="kw">require</span> <span class="str">"flourish"</span>
 
 <span class="kw">class</span> <span class="type">Counter</span>
   <span class="kw">include</span> <span class="type">Chamomile::Application</span>
@@ -207,50 +206,26 @@ token, cmd = stream { |push, t|
   <section id="ecosystem" class="section">
     <div class="container">
       <h2>The Ecosystem</h2>
-      <p class="section-intro">Three gems and a flagship app. Everything you need for terminal UIs in Ruby.</p>
+      <p class="section-intro">One gem and a flagship app. Everything you need for terminal UIs in Ruby.</p>
       <div class="gem-grid">
 
         <a href="https://github.com/chamomile-rb/chamomile" class="gem-card">
           <h3>chamomile</h3>
-          <span class="gem-role">Core Framework</span>
-          <p>Event-driven runtime with async commands, signal handling, diff rendering, mouse support, and full terminal control.</p>
+          <span class="gem-role">The Complete Ruby TUI Framework</span>
+          <p>Event-driven runtime with async commands, signal handling, diff rendering, mouse support, terminal styling, reusable components, and full terminal control.</p>
           <ul class="gem-highlights">
             <li>Declarative callbacks or manual update</li>
             <li>Thread pool command execution</li>
             <li>FPS-throttled diff renderer</li>
+            <li>CSS-like styling &mdash; colors, borders, padding, layout</li>
+            <li>13 reusable components &mdash; TextInput, Table, List, Viewport&hellip;</li>
             <li>Mouse, paste, focus, resize</li>
             <li>Cooperative cancellation &amp; streaming</li>
           </ul>
           <span class="gem-link">chamomile-rb/chamomile</span>
         </a>
 
-        <a href="https://github.com/chamomile-rb/petals" class="gem-card">
-          <h3>petals</h3>
-          <span class="gem-role">Components</span>
-          <p>13 reusable TUI components that follow the same handle/view protocol. Drop in and go &mdash; they handle their own state.</p>
-          <ul class="gem-highlights">
-            <li>TextInput &amp; TextArea</li>
-            <li>Spinner, Timer, Stopwatch, Progress</li>
-            <li>Viewport, Table, List, FilePicker</li>
-            <li>Paginator, Cursor, Help</li>
-          </ul>
-          <span class="gem-link">chamomile-rb/petals</span>
-        </a>
-
-        <a href="https://github.com/chamomile-rb/flourish" class="gem-card">
-          <h3>flourish</h3>
-          <span class="gem-role">Styling</span>
-          <p>CSS-like box model for the terminal. Colors, borders, padding, alignment, and layout composition. Zero dependencies.</p>
-          <ul class="gem-highlights">
-            <li>True color, ANSI 256, basic ANSI</li>
-            <li>10 border presets, per-side colors</li>
-            <li>Padding, margin, width, alignment</li>
-            <li>Horizontal/vertical join &amp; place</li>
-          </ul>
-          <span class="gem-link">chamomile-rb/flourish</span>
-        </a>
-
-        <a href="/lazyrails" class="gem-card gem-card-full">
+        <a href="/lazyrails" class="gem-card">
           <h3>lazyrails</h3>
           <span class="gem-role">Flagship App</span>
           <p>A lazygit-style TUI for Rails developers. Routes, migrations, models, tests, server, gems &mdash; all in one split-pane interface.</p>
@@ -267,11 +242,11 @@ token, cmd = stream { |push, t|
     </div>
   </section>
 
-  <!-- Components (Petals) -->
+  <!-- Components -->
   <section id="components" class="section section-alt">
     <div class="container">
       <h2>Components</h2>
-      <p class="section-intro">13 ready-made components from <a href="https://github.com/chamomile-rb/petals">Petals</a>. Same handle/view protocol.</p>
+      <p class="section-intro">13 ready-made components, built in. Same handle/view protocol.</p>
       <div class="component-grid">
         <div class="component">
           <span class="component-name">TextInput</span>
@@ -336,13 +311,9 @@ token, cmd = stream { |push, t|
         <a href="https://github.com/chamomile-rb">GitHub Org</a>
         <a href="/lazyrails">Lazyrails</a>
         <a href="https://github.com/chamomile-rb/chamomile">Chamomile</a>
-        <a href="https://github.com/chamomile-rb/petals">Petals</a>
-        <a href="https://github.com/chamomile-rb/flourish">Flourish</a>
       </div>
       <div class="footer-links" style="margin-bottom: 16px;">
-        <a href="/docs/chamomile/">Chamomile API Docs</a>
-        <a href="/docs/petals/">Petals API Docs</a>
-        <a href="/docs/flourish/">Flourish API Docs</a>
+        <a href="/docs/chamomile/">API Docs</a>
       </div>
       <p class="footer-copy">MIT License</p>
     </div>

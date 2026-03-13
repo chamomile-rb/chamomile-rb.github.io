@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>class Chamomile::Cursor - Chamomile API Documentation</title>
+
+
+  <meta
+    name="keywords"
+    content="ruby,class,Chamomile::Cursor"
+  >
+
+    <meta
+      name="description"
+      content="class Chamomile::Cursor: Virtual text cursor with blink modes (blink, static, hide)."
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="class Chamomile::Cursor - Chamomile API Documentation">
+
+
+
+    <meta property="og:description" content="Virtual text cursor with blink modes (blink, static, hide).">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="class Chamomile::Cursor - Chamomile API Documentation">
+
+
+
+    <meta name="twitter:description" content="Virtual text cursor with blink modes (blink, static, hide).">
+
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script
+  src="../js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="../js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="../js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="../css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="class has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="../index.html" class="navbar-brand">
+    Chamomile API Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+  <div id="fileindex-section" class="nav-section">
+    <details class="nav-section-collapsible" >
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg>
+            <use href="#icon-file"></use>
+          </svg>
+        </span>
+
+        <span class="nav-section-title">Pages</span>
+
+        <span class="nav-section-chevron">
+          <svg>
+            <use href="#icon-chevron"></use>
+          </svg>
+        </span>
+      </summary>
+
+      <ul class="nav-list">
+
+
+
+
+
+
+            <li>
+              <a href="../README_md.html">
+                README
+              </a>
+            </li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  
+
+  
+<div id="parent-class-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-ancestors"></use></svg>
+      </span>
+      <span class="nav-section-title">Ancestors</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+    <ul><li><a href="../Object.html">Object</a><ul><li>BasicObject</li></ul></li></ul>
+  </details>
+</div>
+
+
+  
+
+  
+
+  
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-c-new">new</a></li>
+
+        <li ><a href="#method-c-next_id">next_id</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-instance-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Instance Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-i-blink_cmd">blink_cmd</a></li>
+
+        <li ><a href="#method-i-blur">blur</a></li>
+
+        <li ><a href="#method-i-focus">focus</a></li>
+
+        <li ><a href="#method-i-focused-3F">focused?</a></li>
+
+        <li ><a href="#method-i-handle">handle</a></li>
+
+        <li ><a href="#method-i-mode-3D">mode=</a></li>
+
+        <li ><a href="#method-i-update">update</a></li>
+
+        <li ><a href="#method-i-view">view</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><details><summary><code><a href="../Chamomile.html">Chamomile</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/ANSI.html">ANSI</a></code></li><li><code><a href="../Chamomile/Align.html">Align</a></code></li><li><details><summary><code><a href="../Chamomile/Application.html">Application</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Application/ClassMethods.html">ClassMethods</a></code></li></ul></details></li><li><code><a href="../Chamomile/Border.html">Border</a></code></li><li><code><a href="../Chamomile/CancelToken.html">CancelToken</a></code></li><li><code><a href="../Chamomile/Color.html">Color</a></code></li><li><code><a href="../Chamomile/ColorProfile.html">ColorProfile</a></code></li><li><code><a href="../Chamomile/CommandPalette.html">CommandPalette</a></code></li><li><code><a href="../Chamomile/Commands.html">Commands</a></code></li><li><code><a href="../Chamomile/Configuration.html">Configuration</a></code></li><li><code><a href="../Chamomile/Cursor.html">Cursor</a></code></li><li><code><a href="../Chamomile/EscapeParser.html">EscapeParser</a></code></li><li><code><a href="../Chamomile/FilePicker.html">FilePicker</a></code></li><li><code><a href="../Chamomile/Frame.html">Frame</a></code></li><li><code><a href="../Chamomile/Help.html">Help</a></code></li><li><code><a href="../Chamomile/InputReader.html">InputReader</a></code></li><li><code><a href="../Chamomile/Join.html">Join</a></code></li><li><code><a href="../Chamomile/KeyBinding.html">KeyBinding</a></code></li><li><code><a href="../Chamomile/KeyMap.html">KeyMap</a></code></li><li><code><a href="../Chamomile/Keymap.html">Keymap</a></code></li><li><details><summary><code><a href="../Chamomile/Layout.html">Layout</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Layout/Base.html">Base</a></code></li><li><code><a href="../Chamomile/Layout/Horizontal.html">Horizontal</a></code></li><li><code><a href="../Chamomile/Layout/List.html">List</a></code></li><li><code><a href="../Chamomile/Layout/Panel.html">Panel</a></code></li><li><code><a href="../Chamomile/Layout/Raw.html">Raw</a></code></li><li><code><a href="../Chamomile/Layout/Spinner.html">Spinner</a></code></li><li><code><a href="../Chamomile/Layout/StatusBar.html">StatusBar</a></code></li><li><code><a href="../Chamomile/Layout/Table.html">Table</a></code></li><li><code><a href="../Chamomile/Layout/Text.html">Text</a></code></li><li><code><a href="../Chamomile/Layout/Vertical.html">Vertical</a></code></li></ul></details></li><li><code><a href="../Chamomile/List.html">List</a></code></li><li><code><a href="../Chamomile/LogView.html">LogView</a></code></li><li><details><summary><code><a href="../Chamomile/Model.html">Model</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Model/ClassMethods.html">ClassMethods</a></code></li><li><code><a href="../Chamomile/Model/FrozenModelEnforcement.html">FrozenModelEnforcement</a></code></li></ul></details></li><li><code><a href="../Chamomile/NullRenderer.html">NullRenderer</a></code></li><li><code><a href="../Chamomile/Paginator.html">Paginator</a></code></li><li><code><a href="../Chamomile/Place.html">Place</a></code></li><li><code><a href="../Chamomile/Program.html">Program</a></code></li><li><code><a href="../Chamomile/Progress.html">Progress</a></code></li><li><code><a href="../Chamomile/RenderCache.html">RenderCache</a></code></li><li><code><a href="../Chamomile/Renderer.html">Renderer</a></code></li><li><details><summary><code><a href="../Chamomile/Router.html">Router</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Router/ClassMethods.html">ClassMethods</a></code></li></ul></details></li><li><code><a href="../Chamomile/Spinner.html">Spinner</a></code></li><li><code><a href="../Chamomile/Spinners.html">Spinners</a></code></li><li><code><a href="../Chamomile/Stopwatch.html">Stopwatch</a></code></li><li><code><a href="../Chamomile/Style.html">Style</a></code></li><li><details><summary><code><a href="../Chamomile/Table.html">Table</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Table/ColumnBuilder.html">ColumnBuilder</a></code></li></ul></details></li><li><details><summary><code><a href="../Chamomile/Testing.html">Testing</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Testing/Harness.html">Harness</a></code></li><li><code><a href="../Chamomile/Testing/SnapshotMismatch.html">SnapshotMismatch</a></code></li></ul></details></li><li><code><a href="../Chamomile/TextArea.html">TextArea</a></code></li><li><code><a href="../Chamomile/TextInput.html">TextInput</a></code></li><li><code><a href="../Chamomile/Timer.html">Timer</a></code></li><li><code><a href="../Chamomile/ViewDSL.html">ViewDSL</a></code></li><li><code><a href="../Chamomile/Viewport.html">Viewport</a></code></li><li><details><summary><code><a href="../Chamomile/Widgets.html">Widgets</a></code></summary><ul class="link-list nav-list"><li><code><a href="../Chamomile/Widgets/HorizontalLayout.html">HorizontalLayout</a></code></li><li><code><a href="../Chamomile/Widgets/Panel.html">Panel</a></code></li><li><code><a href="../Chamomile/Widgets/StatusBar.html">StatusBar</a></code></li><li><code><a href="../Chamomile/Widgets/Text.html">Text</a></code></li><li><code><a href="../Chamomile/Widgets/VerticalLayout.html">VerticalLayout</a></code></li></ul></details></li><li><code><a href="../Chamomile/Wrap.html">Wrap</a></code></li></ul></details></li><li><code><a href="../Chamomile.html">Flourish</a></code></li><li><code><a href="../Object.html">Object</a></code></li><li><code><a href="../Chamomile.html">Petals</a></code></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main" aria-labelledby="class-chamomile-cursor">
+  
+  
+    <ol role="navigation" aria-label="Breadcrumb navigation" class="breadcrumb">
+      
+      <li>
+        
+        <a href="../Chamomile.html">Chamomile</a><span>::</span>
+        
+      </li>
+      
+      <li>
+        
+        <span>Cursor</span>
+        
+      </li>
+      
+    </ol>
+  
+
+  <span id="class-Chamomile::Cursor" class="legacy-anchor"></span>
+  <h1 id="class-chamomile-cursor" class="anchor-link class">
+    class Chamomile::Cursor
+  </h1>
+
+  <section class="description">
+    
+<p>Virtual text cursor with blink modes (blink, static, hide).</p>
+
+  </section>
+
+
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
+
+
+
+
+
+    <section class="constants-list">
+      <header>
+        <h3 id="untitled-constants"><a href="#untitled-constants">Constants</a></h3>
+      </header>
+      <dl>
+
+        <dt id="BLINK_SPEED">BLINK_SPEED</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="MODE_BLINK">MODE_BLINK</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="MODE_HIDE">MODE_HIDE</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="MODE_STATIC">MODE_STATIC</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+      </dl>
+    </section>
+
+
+
+    <section class="attribute-method-details method-section">
+      <header>
+        <h3 id="untitled-attributes"><a href="#untitled-attributes">Attributes</a></h3>
+      </header>
+
+
+      <div id="attribute-i-blink_speed" class="method-detail anchor-link">
+        <div class="method-heading attribute-method-heading">
+          <a href="#attribute-i-blink_speed" title="Link to this attribute">
+            <span class="method-name">blink_speed</span>
+            <span class="attribute-access-type">[R]</span>
+          </a>
+        </div>
+
+        <div class="method-description">
+
+
+        
+
+        </div>
+      </div>
+
+      <div id="attribute-i-blinked" class="method-detail anchor-link">
+        <div class="method-heading attribute-method-heading">
+          <a href="#attribute-i-blinked" title="Link to this attribute">
+            <span class="method-name">blinked</span>
+            <span class="attribute-access-type">[RW]</span>
+          </a>
+        </div>
+
+        <div class="method-description">
+
+
+        
+
+        </div>
+      </div>
+
+      <div id="attribute-i-char" class="method-detail anchor-link">
+        <div class="method-heading attribute-method-heading">
+          <a href="#attribute-i-char" title="Link to this attribute">
+            <span class="method-name">char</span>
+            <span class="attribute-access-type">[RW]</span>
+          </a>
+        </div>
+
+        <div class="method-description">
+
+
+        
+
+        </div>
+      </div>
+
+      <div id="attribute-i-id" class="method-detail anchor-link">
+        <div class="method-heading attribute-method-heading">
+          <a href="#attribute-i-id" title="Link to this attribute">
+            <span class="method-name">id</span>
+            <span class="attribute-access-type">[R]</span>
+          </a>
+        </div>
+
+        <div class="method-description">
+
+
+        
+
+        </div>
+      </div>
+
+      <div id="attribute-i-mode" class="method-detail anchor-link">
+        <div class="method-heading attribute-method-heading">
+          <a href="#attribute-i-mode" title="Link to this attribute">
+            <span class="method-name">mode</span>
+            <span class="attribute-access-type">[R]</span>
+          </a>
+        </div>
+
+        <div class="method-description">
+
+
+        
+
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
+       </header>
+
+
+      <div id="method-c-new" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-new" title="Link to this method">
+                <span class="method-name">new</span>
+                <span class="method-args">(mode: MODE_BLINK, blink_speed: BLINK_SPEED)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="new-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">mode:</span> <span class="ruby-constant">MODE_BLINK</span>, <span class="ruby-value">blink_speed:</span> <span class="ruby-constant">BLINK_SPEED</span>)
+  <span class="ruby-ivar">@id</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">next_id</span>
+  <span class="ruby-ivar">@mode</span> = <span class="ruby-identifier">mode</span>
+  <span class="ruby-ivar">@blink_speed</span> = <span class="ruby-identifier">blink_speed</span>
+  <span class="ruby-ivar">@char</span> = <span class="ruby-string">&quot; &quot;</span>
+  <span class="ruby-ivar">@blinked</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@focused</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@tag</span> = <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-next_id" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-next_id" title="Link to this method">
+                <span class="method-name">next_id</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="next_id-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">next_id</span>
+  <span class="ruby-ivar">@id_mutex</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@id_pid</span>
+      <span class="ruby-ivar">@id_pid</span> = <span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>
+      <span class="ruby-ivar">@next_id</span> = <span class="ruby-value">0</span>
+      <span class="ruby-ivar">@id_mutex</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@next_id</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-node">&quot;#{@id_pid}-cur-#{@next_id}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
+       </header>
+
+
+      <div id="method-i-blink_cmd" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-blink_cmd" title="Link to this method">
+                <span class="method-name">blink_cmd</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="blink_cmd-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">blink_cmd</span>
+  <span class="ruby-identifier">captured_id</span> = <span class="ruby-ivar">@id</span>
+  <span class="ruby-identifier">captured_tag</span> = <span class="ruby-ivar">@tag</span>
+  <span class="ruby-identifier">speed</span> = <span class="ruby-ivar">@blink_speed</span>
+  <span class="ruby-operator">-&gt;</span> {
+    <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">speed</span>)
+    <span class="ruby-constant">CursorBlinkMsg</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">id:</span> <span class="ruby-identifier">captured_id</span>, <span class="ruby-value">tag:</span> <span class="ruby-identifier">captured_tag</span>)
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-blur" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-blur" title="Link to this method">
+                <span class="method-name">blur</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="blur-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">blur</span>
+  <span class="ruby-ivar">@focused</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@blinked</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@tag</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-focus" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-focus" title="Link to this method">
+                <span class="method-name">focus</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="focus-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">focus</span>
+  <span class="ruby-ivar">@focused</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@blinked</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@mode</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MODE_BLINK</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">blink_cmd</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-focused-3F" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-focused-3F" title="Link to this method">
+                <span class="method-name">focused?</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="focused-3F-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">focused?</span>
+  <span class="ruby-ivar">@focused</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-handle" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-handle" title="Link to this method">
+                <span class="method-name">handle</span>
+                <span class="method-args">(msg)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="handle-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle</span>(<span class="ruby-identifier">msg</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CursorBlinkMsg</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@mode</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MODE_BLINK</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@focused</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">tag</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@tag</span>
+
+  <span class="ruby-ivar">@blinked</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@blinked</span>
+  <span class="ruby-ivar">@tag</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">blink_cmd</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+        <div class="aliases">
+          Also aliased as: <a href="Cursor.html#method-i-update">update</a>
+        </div>
+
+
+
+      </div>
+
+
+      <div id="method-i-mode-3D" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-mode-3D" title="Link to this method">
+                <span class="method-name">mode=</span>
+                <span class="method-args">(new_mode)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="mode-3D-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mode=</span>(<span class="ruby-identifier">new_mode</span>)
+  <span class="ruby-ivar">@mode</span> = <span class="ruby-identifier">new_mode</span>
+  <span class="ruby-ivar">@tag</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-ivar">@blinked</span> = <span class="ruby-identifier">new_mode</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MODE_HIDE</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@focused</span>
+  <span class="ruby-ivar">@mode</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MODE_BLINK</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@focused</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">blink_cmd</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-update" class="method-detail anchor-link method-alias">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-update" title="Link to this method">
+                <span class="method-name">update</span>
+                <span class="method-args">(msg)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+        <div class="aliases">
+          Alias for: <a href="Cursor.html#method-i-handle">handle</a>
+        </div>
+
+      </div>
+
+
+      <div id="method-i-view" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-view" title="Link to this method">
+                <span class="method-name">view</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="view-source">
+            <pre class="ruby"><span class="ruby-comment"># File lib/chamomile/components/cursor.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">view</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@char</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@mode</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MODE_HIDE</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@char</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@blinked</span>
+
+  <span class="ruby-node">&quot;\e[7m#{@char}\e[0m&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+  </section>
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+
