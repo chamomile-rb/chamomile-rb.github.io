@@ -132,6 +132,22 @@ code {
 .theme-toggle .icon-sun { display: none; }
 .theme-toggle .icon-moon { display: inline; }
 
+/* === Ko-fi float === */
+.kofi-float {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 100;
+  transition: transform 0.15s ease;
+}
+.kofi-float:hover {
+  transform: translateY(-2px);
+}
+.kofi-float img {
+  height: 36px;
+  display: block;
+}
+
 /* === Hero — split layout === */
 .hero {
   padding: 72px 0 64px;
@@ -757,5 +773,13 @@ a.gem-card:hover {
     width: 40px;
     height: 40px;
     font-size: 1.1rem;
+  }
+
+  .kofi-float {
+    top: 12px;
+    right: 56px;
+  }
+  .kofi-float img {
+    height: 28px;
   }
 }
